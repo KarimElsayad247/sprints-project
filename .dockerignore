@@ -1,0 +1,6 @@
+.git
+angular-src
+public
+node_modules
+.gitignore
+*.md
