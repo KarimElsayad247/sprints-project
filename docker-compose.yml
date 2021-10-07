@@ -1,0 +1,14 @@
+version: '3'
+
+# Define the services/containers to be run
+services:
+  client:
+    build:
+      ./angular-src
+    ports:
+      - "80:80"
+  server:
+    build:
+        ./
+    ports:
+      - "8080:8080"
