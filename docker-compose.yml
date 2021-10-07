@@ -5,10 +5,14 @@ services:
   client:
     build:
       ./angular-src
+    image: 
+      karimelsayad247/sprints-project-client:latest
     ports:
       - "80:80"
   server:
     build:
         ./
+    image:
+      karimelsayad247/sprints-project-server:latest
     ports:
       - "8080:8080"
