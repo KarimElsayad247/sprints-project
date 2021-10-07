@@ -1,0 +1,11 @@
+#appContainer{
+    height: 100%;
+    overflow-y:hidden ;
+    background-color: rgb(172, 114, 247);
+}
+#cardStyle{
+    margin-top: 85px;
+    box-shadow: 5px 3px 10px 5px gray;
+    background-color: rgb(241, 173, 250);
+    border-radius: 10px;
+}

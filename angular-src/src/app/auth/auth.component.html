@@ -1,0 +1,22 @@
+<div id="appContainer" >
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div id="cardStyle" class="card justify-content-center">
+                    <div>
+                        <button class="btn" [class.btn-light]="flag" type="button" style="width: 50%;" (click)="apply('login')">Login</button>
+                        <button class="btn" [class.btn-light]="!flag" type="button" style="width: 50%;" (click)="apply('reg')">Sign Up</button>
+                    </div>
+                    <div class="card-body">
+                        <div *ngIf="flag">
+                            <app-login></app-login>
+                        </div>
+                        <div *ngIf="!flag">
+                            <app-register></app-register>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

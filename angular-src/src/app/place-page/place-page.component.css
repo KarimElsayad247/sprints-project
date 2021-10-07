@@ -1,0 +1,143 @@
+
+ .begin{
+     height: 1000px;
+ }
+ .font-name{
+     font-size: 30px;
+ } 
+
+
+
+.hit-voting:hover {
+    color: blue
+}
+
+@media (min-width: 0) {
+    .g-mr-15 {
+        margin-right: 1.07143rem !important;
+    }
+}
+@media (min-width: 0){
+    .g-mt-3 {
+        margin-top: 0.21429rem !important;
+    }
+}
+
+.g-height-50 {
+    height: 50px;
+}
+
+.g-width-50 {
+    width: 50px !important;
+}
+
+@media (min-width: 0){
+    .g-pa-30 {
+        padding: 2.14286rem !important;
+    }
+}
+
+.g-bg-secondary {
+    background-color: #fafafa !important;
+}
+
+.u-shadow-v18 {
+    box-shadow: 0 5px 10px -6px rgba(0, 0, 0, 0.15);
+}
+
+.g-color-gray-dark-v4 {
+    color: #777 !important;
+}
+
+.g-font-size-12 {
+    font-size: 0.85714rem !important;
+}
+
+.media-comment {
+    margin-top:20px
+}
+
+.comment-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:30px ;
+
+}
+.descContainer{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgb(236, 236, 236);
+
+
+
+
+}
+.add-rev{
+    display: flex;
+    flex-direction: row;
+    gap:10px ;
+    max-width: 1000px;
+}
+
+.star-container{
+    width: 200px;
+    height: 30px;
+   background-color: bisque;
+   position: relative;
+   left: 0px;
+}
+.star-cont-total{
+    width: 300px ;
+    height: 40px ;
+    background-color: bisque;
+}
+.list-icons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.carousel-height{
+    height: 500px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+    background-image: url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
+    
+}
+/* ////////////////////////////////////////////////////////////// */
+div.stars {
+    width: 270px;
+    display: inline-block
+}
+
+.mt-200 {
+    margin-top: 200px
+}
+
+input.star {
+    display: none
+}
+
+label.star {
+    float: right;
+    padding: 10px;
+    font-size: 36px;
+    color: #4A148C;
+    transition: all .2s
+}
+
+input.star:checked~label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s
+}
+/* //////////////////////////////end stars/////////////////////////////// */
+
+.image-slider{
+    height: 1000px;
+}
