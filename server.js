@@ -5,6 +5,7 @@ const colors = require("colors");
 const cors = require("cors");
 const connectDB = require("./config/database");
 const usersRoutes = require("./routes/users");
+const placesRoutes = require("./routes/places");
 
 dotenv.config({ path: "./config/config.env" });
 
@@ -18,7 +19,8 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use("/", usersRoutes);
+app.use("/api/v1", usersRoutes);
+app.use("/api/v1", placesRoutes);
 
 const PORT = process.env.PORT || 8080;
 
