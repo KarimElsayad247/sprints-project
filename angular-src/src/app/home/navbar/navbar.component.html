@@ -1,0 +1,29 @@
+<nav class="navbar bg-dark">
+    <div style="justify-content: space-between;" class="container-fluid">
+      <div class="navbar-header display ">
+          <!-- <i class="bg-image"></i> -->
+          <a class="navbar-brand bg-image" href="#"></a>
+          <a  class="text-light anchor list" href="#">Home</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active">
+            <form class="navbar-form input-sm navbar-left form-nav form-group" action="/action_page.php">
+                <div class="display">
+                  <input type="text" class="form-control input-sm search" placeholder="Search">
+                </div>
+                <button type="submit" class="btn-sm btn-primary navbar-btn">Go</button>
+              </form>
+        </li>
+      </ul>
+      <!-- 
+           style="flex-direction: row; align-items: center;
+           justify-content: center;"
+       -->
+      <ul style="flex-direction: row;" class=" nav navbar-nav">
+        <li class="active"> 
+            <!-- <i class="display icon "></i> -->
+            <button type="submit" class="btn-link btn anchor text-muted navbar-btn"><a routerLink="/auth" >Login</a></button>
+        </li>
+      </ul>
+    </div>
+  </nav>
