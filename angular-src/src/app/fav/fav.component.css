@@ -1,0 +1,83 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+@font-face {
+    font-family: name;
+    src: url("src/assets/fonts/FredokaOne-Regular.ttf");
+}
+.a{
+    display: inline;
+    font-size: 50px;
+    color: white;
+    margin: 20px;
+}
+.b{
+    background-color:beige ;
+}
+.c{
+    color: gainsboro;
+}
+.card-emty{
+    height: 65vh;
+    padding: 25px;
+    margin: 25px;
+}
+.center-card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.card-res{
+    background-color: #f1dac5;
+    position: relative;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   width: 50%;
+   height: 20vh;
+    padding: 25px;
+    margin: 25px;
+    box-shadow: 10px 10px 20px gainsboro;
+}
+.image{
+    
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100px;
+    height: 90px;
+    bottom: 22px;
+}
+.name{
+position: relative;
+bottom: 100px;
+left:  120px;
+font-family: name;
+font-size: xx-large;
+color: grey;
+}
+
+.delete{
+position: relative;
+
+left:  300px;
+}
+.rate{
+    position: relative;
+    
+}
+ngb-rating {
+    color: #81867a;
+    font-size: 20px;
+    position: absolute;
+    right: 190px;
+    top:70px;
+    text-decoration: none;
+}

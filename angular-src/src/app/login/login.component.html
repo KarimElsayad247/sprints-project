@@ -15,7 +15,7 @@
   </div>
 
   <div class="center">
-      <button type="submit" class="btn btn-primary wd-125" [disabled]="loginForm.invalid">Submit</button>
+    <a routerLink="/"><button type="submit" class="btn btn-primary wd-125" [disabled]="loginForm.invalid">Submit</button></a>
   </div>
 </form>
 <div class="text-center text-success" *ngIf="success">{{successMessage}}</div>

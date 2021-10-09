@@ -1,0 +1,71 @@
+<!-- to add component will remove it -->
+<html>
+
+<head>
+    <link rel="stylesheet" href="mainpage.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div *ngIf="true" >
+    <button class="btn btn-primary"(click)=addtofav()>add to fav</button>
+    <h1 class="title"> Tittle of the page</h1>
+
+    
+      <div><button class="buttons">Rate</button>
+        <button class="buttons">Region</button>
+        <button class="buttons">Add</button> 
+    </div>  
+ <div class="container">
+    <div class="row" *ngFor="let item of favs">
+       
+            <div class="card card-res">
+                <div class="card-body">
+                    <ngb-rating [max]="5" [(rate)]="item.rate" [readonly]="true"></ngb-rating>
+                        <a class="place_link" routerLink="/place">
+                            <img [src]="item.imgUrl" class="image">
+                            <p class="name">
+                                <i class="bi bi-heart-fill delete"(click)=remove(item)></i>
+                                {{item.name}}
+                                
+                            </p>
+                        </a>
+                        <!-- <div *ngFor="let rating of counter(item.rate) ;let i = index">
+                            <div class="rate">
+                                <ngb-rating></ngb-rating>
+                            </div>
+                        </div> -->
+                        
+                        
+               
+                       
+                </div>
+                    
+            </div>
+        
+   
+    </div>
+    
+ </div>
+</div>
+<!--------------------------------------------------------->
+
+
+
+
+<ng-container *ngIf="false">
+    <div class="container">
+        <div class=" card b card-emty">
+           
+            <h5 class="card-title ">Favorites</h5>
+        </div>
+        <div class="center">
+            <i class="bi bi-heart a md-100"></i>
+            <h4>No Favorites yet!</h4>
+            <h6 class="c">Click the heart button to add to your Favorites</h6>
+            
+        </div>
+    </div>
+</ng-container>
+</body>
+</html>

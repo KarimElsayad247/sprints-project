@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AuthComponent } from './auth/auth.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
+import { FavComponent } from './fav/fav.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 
 const routes: Routes =[
@@ -15,6 +17,8 @@ const routes: Routes =[
   { path: 'place', component: PlacePageComponent },
   { path: 'add_place', component: AddPlaceComponent },
   { path: 'auth', component: AuthComponent},
+  {path : 'fav',component:FavComponent},
+  {path : 'mainpage',component:MainpageComponent},
   { path: '**', component: NotfoundComponent},
   
 

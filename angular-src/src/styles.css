@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
+
+@font-face {
+    font-family: "Oxygen";
+    src: local("Oxygen"), url(./assets/fonts/Poppins-BoldItalic.ttf) format("truetype");
+}
 html, body{
     height: 100%;
     margin: 0px;

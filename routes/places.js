@@ -7,9 +7,17 @@ const advancedResults = require("../middleware/advancedResults");
 
 router
   .route("/categories")
-  .get(advancedResults(Category), placesController.getCategories)
+  .get(advancedResults(Category, "places"), placesController.getCategories)
   .post(placesController.addCategory);
 
-router.route("/categories/:categoryId").get(placesController.getPlaces);
+router
+  .route("/categories/:categoryId")
+  .get(placesController.getPlaces)
+  .post(placesController.addPlace);
+
+router
+  .route("/categories/:categoryId/:placeId")
+  .put(placesController.updatePlace)
+  .delete(placesController.deletePlace);
 
 module.exports = router;

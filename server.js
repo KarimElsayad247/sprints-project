@@ -1,8 +1,13 @@
+const path = require("path");
+
 const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const colors = require("colors");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
+const cookieParser = require("cookie-parser");
+
 const connectDB = require("./config/database");
 const usersRoutes = require("./routes/users");
 const placesRoutes = require("./routes/places");
@@ -18,6 +23,15 @@ app.use(express.json());
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+// Cookie parser
+app.use(cookieParser());
+
+// File Uploading
+app.use(fileUpload());
+
+// Set static folder
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/v1", usersRoutes);
 app.use("/api/v1", placesRoutes);

@@ -1,6 +1,7 @@
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/asyncHandler");
 const Category = require("../models/Category");
+const Place = require("../models/Place");
 
 //@desc         Get All Categories
 //@route        GET /api/v1/categories
@@ -41,3 +42,30 @@ exports.deleteCategory = asyncHandler(async (req, res, next) => {
 //@route        GET /api/v1/categories/:categoryId
 //@access       Public
 exports.getPlaces = asyncHandler(async (req, res, next) => {});
+
+//@desc         Add New Place to a Category
+//@route        POST /api/v1/categories/:categoryId
+//@access       Private
+exports.addPlace = asyncHandler(async (req, res, next) => {
+  const place = await Place.create(req.body);
+  res.status(200).json({ success: true, data: place });
+});
+
+//@desc         Update a Place
+//@route        PUT /api/v1/categories/:categoryId/:placeId
+//@access       Private
+exports.updatePlace = asyncHandler(async (req, res, next) => {
+  const place = await Place.findByIdAndUpdate(req.params.placeId, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  res.status(200).json({ success: true, data: place });
+});
+
+//@desc         Delete a Place
+//@route        DELETE /api/v1/categories/:categoryId/:placeId
+//@access       Private
+exports.deletePlace = asyncHandler(async (req, res, next) => {
+  await Place.findByIdAndRemove(req.params.placeId);
+  res.status(200).json({ success: true, data: {} });
+});

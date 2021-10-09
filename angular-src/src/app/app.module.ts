@@ -19,6 +19,12 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+import { FavComponent } from './fav/fav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [
@@ -35,11 +41,12 @@ import { AddPlaceComponent } from './add-place/add-place.component';
     LoginComponent,
     RegisterComponent,
     AddPlaceComponent,
-    
+    MainpageComponent,
+    FavComponent,
   ],
   imports: [
-    BrowserModule, FormsModule, appRoutingModule , NgImageSliderModule ,BrowserAnimationsModule,ReactiveFormsModule,
-
+    BrowserModule, FormsModule, appRoutingModule , NgImageSliderModule ,BrowserAnimationsModule,ReactiveFormsModule, NgbModule,
+    HttpClientModule,CommonModule,RatingModule, NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

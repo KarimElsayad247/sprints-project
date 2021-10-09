@@ -1,6 +1,7 @@
+<app-navbar></app-navbar>
 <div id="appContainer" >
     <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-4">
             <h1 class="center">Add Place</h1>
             <form [formGroup]="addPlaceForm"  (ngSubmit)="addPlace()">
                 <div class="mb-3">
@@ -37,14 +38,14 @@
                 
                 <div class="mb-3">
                     <label class="form-label">Rate</label>
-                    <input type="text" class="form-control" formControlName="Rate"> 
+                    <input type="number" class="form-control" formControlName="Rate"> 
                     <span class="text-danger" *ngIf="addPlaceForm.controls.Rate.errors && addPlaceForm.controls.Rate.touched">
                     Invalid Rate
                     </span>
                 </div>
                 
                 <div class="center">
-                    <button type="submit" class="btn btn-primary wd-125" [disabled]="addPlaceForm.invalid">Submit</button>
+                    <a routerLink="/"><button type="submit" class="btn btn-primary wd-125" [disabled]="addPlaceForm.invalid">Submit</button></a>
                 </div>
                 <div class="text-center text-success" *ngIf="added">{{addedMessage}}</div>
             </form>
