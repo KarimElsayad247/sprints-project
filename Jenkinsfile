@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label: "ec2-osama"   
+        label "ec2-osama"   
     }
 
     stages {
