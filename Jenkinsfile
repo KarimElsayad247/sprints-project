@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label "ec2-osama"   
+    }
 
     stages {
         stage("fetch"){
@@ -9,28 +11,54 @@ pipeline {
             }
             post{
                 success{
-                    echo "Git repo fetched"
+                    echo "========fetch executed successfully========"
                 }
                 failure{
-                    echo "Failed Failed to pull code-base from githu"
-                    slackSend (color:"#FF0000", message: "Failed to pull code-base from github") 
+                    echo "========fetch execution failed========"
+                    slackSend (color:"#FF0000", message: "Failed to pull code-base from github")
+                    
                 }
             }
         }
-        stage('docker-compose pull') {
+        stage('docker-compose build') {
             steps {
-                echo "Pulling image from dockerhub repo"
+                echo "========docker-compose build ========"
                 sh """
-                    docker-compose pull
+                    docker-compose build
                 """    
             }
             post {
                 success {
-                    echo "Image pulled successfully"
+                    echo "========docker-compose build success ========"
+                    slackSend (color:"#00FF00", message: "Master: Building Image success")
                 }
                 failure {
-                    echo "Failed to pull image from dockerhub repo"
-                    slackSend (color:"#FF0000", message: "Master: Failed to pull image from dockerhub repo")
+                    echo "========docker-compose build failed========"
+                    slackSend (color:"#FF0000", message: "Master: Building Image failure")
+                }
+           }
+        }
+        
+        
+        stage('push image') {
+            steps {
+                echo "======== Pushing image to registry ========="
+                withCredentials([usernamePassword(credentialsId: 'karim-docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
+                {
+                sh """
+                docker login -u ${USERNAME}  -p ${PASSWORD}
+                docker-compose push
+                """
+                }
+            }
+            post {
+                success {
+                    echo "======== Failed to Pushing image to registry ========="
+                    slackSend (color:"#00FF00", message: "Master: pushing image success")
+                }
+                failure {
+                    echo "======== Pushing image to registry was successful ========="
+                    slackSend (color:"#FF0000", message: "Master: pushing image failure")
                 }
            }
         }
@@ -38,7 +66,7 @@ pipeline {
             steps {
                 echo "Deploying app"
                 sh """
-                    docker-compose up -d
+                    docker-compose up
                 """
                 }
             post {
@@ -52,5 +80,6 @@ pipeline {
                 }
            }
         }
+
     }
 }
