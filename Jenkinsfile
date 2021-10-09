@@ -5,7 +5,7 @@ pipeline {
         stage("fetch"){
             steps{
                 echo "========executing fetch========"
-                git "https://github.com/KarimElsayad247/sprints-project/"
+                git branch: "main", url: "https://github.com/KarimElsayad247/sprints-project/"
             }
             post{
                 success{
