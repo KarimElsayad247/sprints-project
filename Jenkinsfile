@@ -9,54 +9,28 @@ pipeline {
             }
             post{
                 success{
-                    echo "========fetch executed successfully========"
+                    echo "Git repo fetched"
                 }
                 failure{
-                    echo "========fetch execution failed========"
-                    slackSend (color:"#FF0000", message: "Failed to pull code-base from github")
-                    
+                    echo "Failed Failed to pull code-base from githu"
+                    slackSend (color:"#FF0000", message: "Failed to pull code-base from github") 
                 }
             }
         }
-        stage('docker-compose build') {
+        stage('docker-compose pull') {
             steps {
-                echo "========docker-compose build ========"
+                echo "Pulling image from dockerhub repo"
                 sh """
-                    docker-compose build
+                    docker-compose pull
                 """    
             }
             post {
                 success {
-                    echo "========docker-compose build success ========"
-                    slackSend (color:"#00FF00", message: "Master: Building Image success")
+                    echo "Image pulled successfully"
                 }
                 failure {
-                    echo "========docker-compose build failed========"
-                    slackSend (color:"#FF0000", message: "Master: Building Image failure")
-                }
-           }
-        }
-        
-        
-        stage('push image') {
-            steps {
-                echo "======== Pushing image to registry ========="
-                withCredentials([usernamePassword(credentialsId: 'karim-docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
-                {
-                sh """
-                docker login -u ${USERNAME}  -p ${PASSWORD}
-                docker-compose push
-                """
-                }
-            }
-            post {
-                success {
-                    echo "======== Failed to Pushing image to registry ========="
-                    slackSend (color:"#00FF00", message: "Master: pushing image success")
-                }
-                failure {
-                    echo "======== Pushing image to registry was successful ========="
-                    slackSend (color:"#FF0000", message: "Master: pushing image failure")
+                    echo "Failed to pull image from dockerhub repo"
+                    slackSend (color:"#FF0000", message: "Master: Failed to pull image from dockerhub repo")
                 }
            }
         }
@@ -78,6 +52,5 @@ pipeline {
                 }
            }
         }
-
     }
 }
