@@ -38,7 +38,7 @@ pipeline {
             steps {
                 echo "Deploying app"
                 sh """
-                    docker-compose up
+                    docker-compose up -d
                 """
                 }
             post {
