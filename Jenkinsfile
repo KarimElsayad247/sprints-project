@@ -2,19 +2,37 @@ pipeline {
     agent any
 
     stages {
-        stage('build image') {
+        stage("fetch"){
+            steps{
+                echo "========executing fetch========"
+                git "https://github.com/KarimElsayad247/sprints-project/"
+            }
+            post{
+                success{
+                    echo "========fetch executed successfully========"
+                }
+                failure{
+                    echo "========fetch execution failed========"
+                    slackSend (color:"#FF0000", message: "Failed to pull code-base from github")
+                    
+                }
+            }
+        }
+        stage('docker-compose build') {
             steps {
-            sh """
-               docker ps -aqf "name=/////////"  | xargs --no-run-if-empty docker container rm -f
-               docker build -t ////////// .
-            """    
+                echo "========docker-compose build ========"
+                sh """
+                    docker-compose build
+                """    
             }
             post {
                 success {
-                     slackSend (color:"#00FF00", message: "Master: Building Image success")
+                    echo "========docker-compose build success ========"
+                    slackSend (color:"#00FF00", message: "Master: Building Image success")
                 }
                 failure {
-                     slackSend (color:"#FF0000", message: "Master: Building Image failure")
+                    echo "========docker-compose build failed========"
+                    slackSend (color:"#FF0000", message: "Master: Building Image failure")
                 }
            }
         }
@@ -22,35 +40,41 @@ pipeline {
         
         stage('push image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '////////', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
+                echo "======== Pushing image to registry ========="
+                withCredentials([usernamePassword(credentialsId: 'karim-docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
                 {
                 sh """
                 docker login -u ${USERNAME}  -p ${PASSWORD}
-                docker push ///////////////
+                docker-compose push
                 """
                 }
             }
             post {
                 success {
-                     slackSend (color:"#00FF00", message: "Master: pushing image success")
+                    echo "======== Failed to Pushing image to registry ========="
+                    slackSend (color:"#00FF00", message: "Master: pushing image success")
                 }
                 failure {
-                     slackSend (color:"#FF0000", message: "Master: pushing image failure")
+                    echo "======== Pushing image to registry was successful ========="
+                    slackSend (color:"#FF0000", message: "Master: pushing image failure")
                 }
            }
         }
         stage('deploy image') {
             steps {
-            sh """
-            docker run -d -p 8000:8000 --name=/////// ///////////        
-            """
-            }
+                echo "Deploying app"
+                sh """
+                    docker-compose up
+                """
+                }
             post {
                 success {
-                     slackSend (color:"#00FF00", message: "Master: deploying Image success")
+                    echo "App deployed successfully"
+                    slackSend (color:"#00FF00", message: "Master: deploying Image success")
                 }
                 failure {
-                     slackSend (color:"#FF0000", message: "Master: deploying Image failure")
+                    echo "failed to deploy app"
+                    slackSend (color:"#FF0000", message: "Master: deploying Image failure")
                 }
            }
         }
