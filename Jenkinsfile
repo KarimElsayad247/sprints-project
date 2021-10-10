@@ -26,7 +26,6 @@ pipeline {
             steps {
                 echo "========docker-compose build ========"
                 sh """
-                    echo "${MONGO_URL}" > ./config/config.env
                     docker-compose build
                 """    
             }
