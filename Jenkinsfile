@@ -3,7 +3,7 @@ pipeline {
         label "ec2-osama"   
     }
     environment {
-        MONGO_URL = credentials('mongo-url')
+        MONGO_URI = credentials('mongo-url')
     }
     stages {
         stage("fetch"){
