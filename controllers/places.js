@@ -39,12 +39,46 @@ exports.deleteCategory = asyncHandler(async (req, res, next) => {
 });
 
 //@desc         Get Places of a Category
-//@route        GET /api/v1/categories/:categoryId
+//@route        GET /api/v1/palces
+//@route        GET /api/v1/categories/:categoryId/places
 //@access       Public
-exports.getPlaces = asyncHandler(async (req, res, next) => {});
+exports.getPlaces = asyncHandler(async (req, res, next) => {
+  if (req.params.categoryId) {
+    const places = await Place.find({ bootcamp: req.params.categoryId });
+
+    return res.status(200).json({
+      success: true,
+      count: places.length,
+      data: places,
+    });
+  } else {
+    res.status(200).json(res.advancedResults);
+  }
+});
+
+//@desc         Get Signle Place
+//@route        GET /api/v1/categories/:categoryId/places/:placeId
+//@access       Public
+exports.getPlace = asyncHandler(async (req, res, next) => {
+  const place = await Place.findById(req.params.id).populate({
+    path: "category",
+  });
+
+  if (!course) {
+    return next(
+      new ErrorResponse(`No course with the id of ${req.params.id}`),
+      404,
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+    data: course,
+  });
+});
 
 //@desc         Add New Place to a Category
-//@route        POST /api/v1/categories/:categoryId
+//@route        POST /api/v1/categories/:categoryId/places
 //@access       Private
 exports.addPlace = asyncHandler(async (req, res, next) => {
   const place = await Place.create(req.body);
@@ -52,7 +86,7 @@ exports.addPlace = asyncHandler(async (req, res, next) => {
 });
 
 //@desc         Update a Place
-//@route        PUT /api/v1/categories/:categoryId/:placeId
+//@route        PUT /api/v1/categories/:categoryId/places/:placeId
 //@access       Private
 exports.updatePlace = asyncHandler(async (req, res, next) => {
   const place = await Place.findByIdAndUpdate(req.params.placeId, req.body, {
@@ -63,7 +97,7 @@ exports.updatePlace = asyncHandler(async (req, res, next) => {
 });
 
 //@desc         Delete a Place
-//@route        DELETE /api/v1/categories/:categoryId/:placeId
+//@route        DELETE /api/v1/categories/:categoryId/places/:placeId
 //@access       Private
 exports.deletePlace = asyncHandler(async (req, res, next) => {
   await Place.findByIdAndRemove(req.params.placeId);

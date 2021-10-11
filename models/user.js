@@ -39,10 +39,17 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please add an address"],
   },
+  photo: {
+    type: String,
+    default: "",
+  },
   disability: {
     type: mongoose.Schema.ObjectId,
     ref: "Disability",
-    required: true,
+  },
+  favourites: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Place",
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
@@ -52,10 +59,23 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
+UserSchema.virtual("comments", {
+  ref: "Comment",
+  localField: "_id",
+  foreignField: "user",
+  justOne: false,
+});
+
 // Encrypt Password using bcrypt
 UserSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
+
+  if (!this.photo) {
+    this.gender === "male"
+      ? (this.photo = "male.jpg")
+      : (this.photo = "female.jpg");
+  }
 });
 
 // Match user entered password to hash password in database

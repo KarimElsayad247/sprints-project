@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const connectDB = require("./config/database");
 const usersRoutes = require("./routes/users");
 const placesRoutes = require("./routes/places");
+const authRoutes = require("./routes/auth");
 
 dotenv.config({ path: "./config/config.env" });
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/v1", usersRoutes);
 app.use("/api/v1", placesRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 const PORT = process.env.PORT || 8080;
 

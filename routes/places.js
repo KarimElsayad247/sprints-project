@@ -5,19 +5,24 @@ const Category = require("../models/Category");
 
 const advancedResults = require("../middleware/advancedResults");
 
+const { protect, authorize } = require("../middleware/auth");
+
 router
   .route("/categories")
   .get(advancedResults(Category, "places"), placesController.getCategories)
-  .post(placesController.addCategory);
+  .post(protect, authorize("admin", "user"), placesController.addCategory);
 
 router
-  .route("/categories/:categoryId")
+  .route("/categories/:categoryId/places")
   .get(placesController.getPlaces)
-  .post(placesController.addPlace);
+  .post(protect, authorize("admin", "user"), placesController.addPlace);
 
 router
-  .route("/categories/:categoryId/:placeId")
-  .put(placesController.updatePlace)
-  .delete(placesController.deletePlace);
+  .route("/categories/:categoryId/places/:placeId")
+  .get(placesController.getPlace)
+  .put(protect, authorize("admin", "user"), placesController.updatePlace)
+  .delete(protect, authorize("admin"), placesController.deletePlace);
+
+router.route("/palces").get(placesController.getPlaces);
 
 module.exports = router;
