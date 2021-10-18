@@ -8,9 +8,6 @@ const User = require("../models/User");
 //@route        PUT /api/v1/user/photo
 //@access       Private
 exports.profilePhotoUpload = asyncHandler(async (req, res, next) => {
-  console.log("===========");
-  console.log(req.user);
-  console.log("===========");
   const user = await User.findById(req.user.id);
 
   if (!user) {

@@ -44,7 +44,7 @@ exports.deleteCategory = asyncHandler(async (req, res, next) => {
 //@access       Public
 exports.getPlaces = asyncHandler(async (req, res, next) => {
   if (req.params.categoryId) {
-    const places = await Place.find({ bootcamp: req.params.categoryId });
+    const places = await Place.find({ category: req.params.categoryId });
 
     return res.status(200).json({
       success: true,
@@ -64,16 +64,16 @@ exports.getPlace = asyncHandler(async (req, res, next) => {
     path: "category",
   });
 
-  if (!course) {
+  if (!place) {
     return next(
-      new ErrorResponse(`No course with the id of ${req.params.id}`),
+      new ErrorResponse(`No place with the id of ${req.params.id}`),
       404,
     );
   }
 
   res.status(200).json({
     success: true,
-    data: course,
+    data: place,
   });
 });
 

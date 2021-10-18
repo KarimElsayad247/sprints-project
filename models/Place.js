@@ -23,6 +23,10 @@ const PlaceSchema = new mongoose.Schema({
     ref: "Category",
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Place", PlaceSchema);

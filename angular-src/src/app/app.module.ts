@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingModule } from 'ng-starrating';
+import {AuthservicesService} from './services/authservices.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { RatingModule } from 'ng-starrating';
     BrowserModule, FormsModule, appRoutingModule , NgImageSliderModule ,BrowserAnimationsModule,ReactiveFormsModule, NgbModule,
     HttpClientModule,CommonModule,RatingModule, NgbModule
   ],
-  providers: [],
+  providers: [AuthservicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

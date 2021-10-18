@@ -1,7 +1,7 @@
 <form [formGroup]="regForm" (ngSubmit)="register()">
     <div class="mb-2">
       <label class="form-label">Email address</label>
-      <input type="email" class="form-control" formControlName="email"> 
+      <input type="email" [(ngModel)]='email' name="email" class="form-control" formControlName="email"> 
       <span class="text-danger" *ngIf="regForm.controls.email.errors && regForm.controls.email.touched">
         Invalid Email
       </span>
@@ -9,14 +9,14 @@
     
     <div class="mb-2">
       <label class="form-label">Password</label>
-      <input type="password" class="form-control" formControlName="password">
+      <input type="password" [(ngModel)]='password' name="password" class="form-control" formControlName="password">
       <span class="text-danger" *ngIf="regForm.controls.password.errors && regForm.controls.password.touched">
         Password is less than 6 Character
       </span>
     </div>
     <div class="mb-2">
         <label class="form-label">Age</label>
-        <input type="number" class="form-control" formControlName="age">
+        <input type="number" [(ngModel)]='age' name="age" class="form-control" formControlName="age">
         <span class="text-danger" *ngIf="regForm.controls.age.errors && regForm.controls.age.touched">
           Invalid Age
         </span>
@@ -24,7 +24,7 @@
       
     <div class="mb-2">
     <label class="form-label">Location</label>
-    <input type="text" class="form-control" formControlName="location">
+    <input type="text" [(ngModel)]='location' name="location" class="form-control" formControlName="location">
     <span class="text-danger" *ngIf="regForm.controls.location.errors && regForm.controls.location.touched">
       Invalid Location
     </span>
@@ -32,7 +32,7 @@
 
     <div class="mb-3">
         <label class="form-label">Disability</label>
-        <input type="text" class="form-control" formControlName="disability">
+        <input type="text" [(ngModel)]='disability' name="disability" class="form-control" formControlName="disability">
         <span class="text-danger" *ngIf="regForm.controls.disability.errors && regForm.controls.disability.touched">
           Invalid Disability
         </span>
