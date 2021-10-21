@@ -21,3 +21,4 @@ RUN npm run build
 FROM nginx:1.20.1-alpine
 
 COPY --from=build-step public/ /usr/share/nginx/html 
+COPY nginx.conf /etc/nginx/nginx.conf
