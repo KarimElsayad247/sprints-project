@@ -1,13 +1,21 @@
-
- .begin{
-     height: 1000px;
- }
- .font-name{
-     font-size: 30px;
- } 
-
-
-
+.checked{
+    color: orange;
+}
+.main-desc{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgb(236, 236, 236);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px,  1fr) ) ;
+}
+.begin{
+    height: 1000px;
+}
+.font-name{
+    font-size: 30px;
+} 
 .hit-voting:hover {
     color: blue
 }
@@ -140,4 +148,43 @@ input.star:checked~label.star:before {
 
 .image-slider{
     height: 1000px;
+}
+/*//////////////////////////stars////////////////////////////////*/
+.rate {
+    float: left;
+    display: flex;
+    height: 46px;
+    padding: 0 10px;
+    flex-flow: row-reverse wrap;
+    flex-wrap: nowrap;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:left;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
 }

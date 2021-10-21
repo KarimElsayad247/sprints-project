@@ -1,0 +1,55 @@
+.search{
+    width: 60%;
+    /* padding: 1% 0%; */
+}
+.S-D{
+    background-color: #FFD369;
+    padding: 5%;
+    box-shadow: 5px 6px 10px rgb(0 0 0 / 45%);
+    /* position: absolute; */
+    /* top: 150px; */
+    z-index: 1;
+}
+.form-control{
+    background-color: #393E46;
+    border-color: #222831;
+    color: #EEEEEE;
+    width: 100%;
+    display: flex;
+} 
+li{
+    background-color: #393E46;
+    color: #EEEEEE;
+}
+ul{     
+    box-shadow: 5px 6px 10px rgb(0 0 0 / 45%);
+}
+.header{
+    background-image:url('src/assets/image/Header.jpg')!important;
+    height: 600px;
+    /* position:fixed; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+
+}
+.overlay {
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    background-color: rgba(0, 0, 0 ,0.7); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+h1{
+    text-align: center;
+    color: #EEEEEE;
+    padding-top: 12%;
+    padding-bottom: 3%;
+    font-family: bebas-Font;
+    font-weight: bold;
+    font-size: 100px;
+}
+@font-face {
+    font-family: bebas-Font;
+    src: url('src/assets/fonts/BebasNeue-Regular.ttf');
+}

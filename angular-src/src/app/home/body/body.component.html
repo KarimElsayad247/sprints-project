@@ -1,4 +1,25 @@
-<!-- <div>
-    <input type="text" *ngIf="flag">
-</div> -->
+<div class="header d-flex ">
+    <div class="overlay">
+        <h1>We are Here to Help</h1>
+        <div class="container search">
+            <div class="content" role="main">
+                <div class="form-group S-D d-flex justify-content-between ">
+                    <!-- <img class="slider" src="https://images.unsplash.com/photo-1481833761820-0509d3217039?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fHJlc3RhdXJhbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt=""> -->
+                    <!-- <img class="slider" src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHJlc3RhdXJhbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt=""> -->
+                    <!-- <img class="slider" src="https://images.unsplash.com/photo-1560053608-13721e0d69e8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjR8fHJlc3RhdXJhbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt=""> -->
+                    <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+                        [(ngModel)]="searchText" placeholder="Enter text to search" autofocus>
+                    <!-- <button class="btn btn-outline-dark rounded-circle"><i class="bi bi-search"></i></button> -->
+                </div>
+                <ul class="list-group list-group-flush">
+                    <!-- results of ngFor is passed to appFilter with argument searchText -->
+                    <li class="list-group-item" *ngFor="let c of arrName | appFilter: searchText">
+                        {{c}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <app-card></app-card>

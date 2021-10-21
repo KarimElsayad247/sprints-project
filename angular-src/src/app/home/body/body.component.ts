@@ -6,9 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-
-  constructor() { }
-
+  searchText=""
+  constructor(){ }
   ngOnInit(): void {
+
   }
+  arrName=[
+    'Restaurants',
+    'Cinema',
+    'Parks',
+    'Hospitals',
+    'Unversities',
+    'Gouverments'
+  ]
+  text:string='';
+ 
 }
+

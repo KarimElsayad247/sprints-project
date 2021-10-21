@@ -1,45 +1,85 @@
 <form [formGroup]="regForm" (ngSubmit)="register()">
-    <div class="mb-2">
-      <label class="form-label">Email address</label>
-      <input type="email" [(ngModel)]='email' name="email" class="form-control" formControlName="email"> 
+  <div class="d-flex justify-content-between flex-wrap">
+    <!-- <div class="d-flex flex-row"> -->
+    <div class="mb-2 space">
+      <label class="form-label required">Name</label>
+      <input type="text" class="form-control I-C" formControlName="name" />
+      <span class="text-danger" *ngIf="regForm.controls.name.errors && regForm.controls.name.touched">
+        Invalid Name
+      </span>
+    </div>
+    <div class="mb-2 space">
+      <label class="form-label required">Email address</label>
+      <input type="email" class="form-control I-C" formControlName="email" />
       <span class="text-danger" *ngIf="regForm.controls.email.errors && regForm.controls.email.touched">
         Invalid Email
       </span>
     </div>
-    
-    <div class="mb-2">
-      <label class="form-label">Password</label>
-      <input type="password" [(ngModel)]='password' name="password" class="form-control" formControlName="password">
-      <span class="text-danger" *ngIf="regForm.controls.password.errors && regForm.controls.password.touched">
-        Password is less than 6 Character
+    <!-- </div> -->
+    <!-- <div class="d-flex"> -->
+    <div class="mb-2 space">
+      <label class="form-label required">Password</label>
+      <input type="password" class="form-control I-C" formControlName="password" />
+      <span class="text-danger" *ngIf="
+          regForm.controls.password.errors && regForm.controls.password.touched
+        ">
+        Password less than 6 characters
       </span>
     </div>
-    <div class="mb-2">
-        <label class="form-label">Age</label>
-        <input type="number" [(ngModel)]='age' name="age" class="form-control" formControlName="age">
-        <span class="text-danger" *ngIf="regForm.controls.age.errors && regForm.controls.age.touched">
-          Invalid Age
-        </span>
+    <div class="mb-2 space">
+      <label class="form-label required">Birthday</label>
+      <input type="date" class="form-control I-C" formControlName="birthday" />
+      <span class="text-danger" *ngIf="
+          regForm.controls.birthday.errors && regForm.controls.birthday.touched
+        ">
+        Invalid Birthday
+      </span>
     </div>
-      
-    <div class="mb-2">
-    <label class="form-label">Location</label>
-    <input type="text" [(ngModel)]='location' name="location" class="form-control" formControlName="location">
-    <span class="text-danger" *ngIf="regForm.controls.location.errors && regForm.controls.location.touched">
-      Invalid Location
-    </span>
+    <!-- </div> -->
+    <!-- <div class="d-flex"> -->
+    <div class="mb-2 space">
+      <label class="form-label">Address</label>
+      <input type="text" class="form-control I-C" formControlName="address" />
+    </div>
+    <div class="mb-3 space">
+      <label class="form-label">Phone</label>
+      <input type="tel" class="form-control I-C" formControlName="phone" />
+    </div>
+    <!-- </div> -->
+    <div class="mb-2 space">
+      <label class="form-label required">Disability</label>
+      <input type="text" class="form-control I-C" list="select" formControlName="disability"
+        placeholder="choose your disabality" />
+      <datalist id="select">
+        <option value="blind"></option>
+        <option value="Deaf"></option>
+      </datalist>
+      <span class="text-danger" *ngIf="
+          regForm.controls.disability.errors &&
+          regForm.controls.disability.touched
+        ">
+        Invalid Disability
+      </span>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Disability</label>
-        <input type="text" [(ngModel)]='disability' name="disability" class="form-control" formControlName="disability">
-        <span class="text-danger" *ngIf="regForm.controls.disability.errors && regForm.controls.disability.touched">
-          Invalid Disability
-        </span>
-    </div>
-
-    <div class="center">
-        <button type="submit" class="btn btn-primary wd-125" [disabled]="regForm.invalid">Submit</button>
-    </div>
-  </form>
-  <div class="text-center text-success" *ngIf="success">{{successMessage}}</div>
+    <!-- <div class="mb-2 space">
+      <label class="form-label required">Gender</label>
+      <br>
+      <input class="form-check-input  I-C" formControlName="gender" type="radio" value="" name="check" id="flexCheckDefault">
+      <label class="form-check-label  I-C" for="flexCheckDefault">
+        Male
+      </label>
+      <br>
+      <input class="form-check-input  I-C " formControlName="gender" type="radio" value="" name="check" id="flexCheckDefault1">
+      <label class="form-check-label  I-C " for="flexCheckDefault1">
+        Female
+      </label>
+    </div> -->
+  </div>
+  <div class="center">
+    <button type="submit" class="btn b-c wd-125" [disabled]="regForm.invalid">
+      Submit
+    </button>
+  </div>
+</form>
+<div class="text-center text-success" *ngIf="success">{{ successMessage }}</div>

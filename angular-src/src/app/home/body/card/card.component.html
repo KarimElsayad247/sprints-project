@@ -1,26 +1,25 @@
-<div class="container-sm">
-  <div class="row">
-    <div class="col" *ngFor="let el of (arr) ; let i = index">
-      <div class="card shadow" style="border-radius: 20px; width: 18rem;">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKSOcH4MxUbfCFb-_Q24AEW_o31dg9gXMhw&usqp=CAU" class="card-img-top rounded" alt="Restaurants-background">
-          <div class="card-body">
-            <a href="/mainpage" style="text-decoration: none;">
-                <h5 class="card-title">Restaurants</h5>
-            </a>
-            <p class="card-text">Here You Can Find the Best Restaurants In Your Area.</p>
-          </div>
-          <!-- <ul class="list-group list-group-flush">
-            <li class="list-group-item">Fast Food</li>
-            <li class="list-group-item">Family Style</li>
-            <li class="list-group-item">Causal dining</li>
-          </ul> -->
-          <!-- <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+<div class="container" >
+  <div class="row mt-5 text-center">
+    <div class="col-lg-4 d-flex c1" *ngFor="let el of (arr) ; let i = index " >
+      <div class="card shadow" style=" background:#222831; width: 18rem; color: #EEEEEE;">
+        <div class="d-flex">
+          <img src="https://media.istockphoto.com/photos/3d-render-wooden-style-restaurant-cafe-picture-id1179449390?b=1&k=20&m=1179449390&s=170667a&w=0&h=_1JRMQ28VfvDwzgVmSLnHllSf164Q2SagfxAYoJF8ow=" class="image"  alt="Restaurants-background">
+        </div>  
+        <!-- <div class="mall-slide">
+          <div class="slid-content">
+              <div class="mall-show-slide fade" *ngFor="let item of Imagedata;"> -->
+                  <!-- <img src="{{item.url}}" class="img"> -->
+              <!-- </div>
           </div> -->
+        <!-- </div> -->
+        <div class="card-body" >
+          <a href="/mainpage" style="text-decoration: none;">
+            <h5 class="card-title" style="color: #FFD369 ;">{{arrName[i]}}</h5>
+          </a>
+          <p class="card-text">Here You Can Find the Best Restaurants In Your Area.</p>
+        </div>
       </div>
       <br>
       <br>
   </div>
 </div>
-

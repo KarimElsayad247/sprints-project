@@ -7,6 +7,11 @@
     background-size: contain;
     background-image: url('https://i0.wp.com/aspaceforphotography.com/wp-content/uploads/2017/11/f2637562392edd24809a100a0211e6f8-symbols-design-logo-icon-design.jpg?ssl=1');
 } 
+.right{
+    display: flex;
+    justify-content:flex-end;
+    align-items: flex-end;
+}
 .anchor{
     text-decoration: none;
 }
@@ -15,8 +20,16 @@
     justify-content: flex-start;
     /* margin-right: 300px; */
 }
-.display{
-    display: flex;
+.navbar-header {
+    width: 100px;
+    justify-content:space-between;
+    align-items:center;
+}
+.style{
+
+    margin:0px;
+    font-weight: bold;
+    font-size: 30px;
 }
 .search{
     align-self: center;

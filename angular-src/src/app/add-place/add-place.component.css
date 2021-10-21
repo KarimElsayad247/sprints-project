@@ -8,5 +8,24 @@
 #appContainer{
     height: 100%;
     overflow-y:hidden ;
-    background-color: rgb(172, 114, 247);
+    /* background-color: rgb(172, 114, 247); */
+}
+.card-style{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    margin:6% 0%;
+}
+.overlay {
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    background-color: rgba(57, 62, 70 ,0.3); /* Black background with opacity */
+    z-index: 2;
+}
+.img{
+    background-image: url('https://images.unsplash.com/photo-1569937756023-a079ccbe730e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGRpc2FiaWxpdHklMjBzZXJ2aWNlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    position: relative;
 }

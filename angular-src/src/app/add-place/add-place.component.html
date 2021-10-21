@@ -1,54 +1,75 @@
 <app-navbar></app-navbar>
-<div id="appContainer" >
-    <div class="container">
-        <div class="row justify-content-center mt-4">
-            <h1 class="center">Add Place</h1>
-            <form [formGroup]="addPlaceForm"  (ngSubmit)="addPlace()">
-                <div class="mb-3">
-                <label class="form-label">Name</label>
-                <input type="text" class="form-control" formControlName="Name"> 
-                <span class="text-danger" *ngIf="addPlaceForm.controls.Name.errors && addPlaceForm.controls.Name.touched">
-                    Invalid Name
-                </span>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label">Location</label>
-                    <input type="text" class="form-control" formControlName="Location"> 
-                    <span class="text-danger" *ngIf="addPlaceForm.controls.Location.errors && addPlaceForm.controls.Location.touched">
-                    Invalid Location
+<div class="card-style" >
+    <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4 img img-fluid">
+              <div class="overlay">
+                  
+              </div>
+            <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<app-footer></app-footer>
+<!-- 
+    <div id="appContainer" style="background-color: white;" >
+        <div class="container">
+            <div class="row justify-content-center mt-4">
+                <form [formGroup]="addPlaceForm"  (ngSubmit)="addPlace()">
+                    <div class="mb-3">
+                    <label class="form-label" style="font-weight: 600;">Name</label>
+                    <input type="text" class="form-control" formControlName="Name" style="border: 1px solid grey;"> 
+                    <span class="text-danger" *ngIf="addPlaceForm.controls.Name.errors && addPlaceForm.controls.Name.touched">
+                        Invalid Name
                     </span>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label">Description</label>
-                    <input type="text" class="form-control" formControlName="Description"> 
-                    <span class="text-danger" *ngIf="addPlaceForm.controls.Description.errors && addPlaceForm.controls.Description.touched">
-                    Invalid Description
-                    </span>
-                </div>  
-                
-                <div class="mb-3">
-                    <label class="form-label">Review</label>
-                    <input type="text" class="form-control" formControlName="Review"> 
-                    <span class="text-danger" *ngIf="addPlaceForm.controls.Review.errors && addPlaceForm.controls.Review.touched">
-                    Invalid Review
-                    </span>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label">Rate</label>
-                    <input type="number" class="form-control" formControlName="Rate"> 
-                    <span class="text-danger" *ngIf="addPlaceForm.controls.Rate.errors && addPlaceForm.controls.Rate.touched">
-                    Invalid Rate
-                    </span>
-                </div>
-                
-                <div class="center">
-                    <a routerLink="/"><button type="submit" class="btn btn-primary wd-125" [disabled]="addPlaceForm.invalid">Submit</button></a>
-                </div>
-                <div class="text-center text-success" *ngIf="added">{{addedMessage}}</div>
-            </form>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label" style="font-weight: 600;">Location</label>
+                        <input type="text" class="form-control" formControlName="Location" style="border: 1px solid grey;"> 
+                        <span class="text-danger" *ngIf="addPlaceForm.controls.Location.errors && addPlaceForm.controls.Location.touched">
+                        Invalid Location
+                        </span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label" style="font-weight: 600;">Description</label>
+                        <input type="text" class="form-control" formControlName="Description" style="border: 1px solid grey;"> 
+                        <span class="text-danger" *ngIf="addPlaceForm.controls.Description.errors && addPlaceForm.controls.Description.touched">
+                        Invalid Description
+                        </span>
+                    </div>  
+                    
+                    <div class="mb-3">
+                        <label class="form-label" style="font-weight: 600;">Review</label>
+                        <input type="text" class="form-control" formControlName="Review" style="border: 1px solid grey;"> 
+                        <span class="text-danger" *ngIf="addPlaceForm.controls.Review.errors && addPlaceForm.controls.Review.touched">
+                        Invalid Review
+                        </span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label" style="font-weight: 600;">Rate</label>
+                        <input type="number" class="form-control" formControlName="Rate" style="border: 1px solid grey;"> 
+                        <span class="text-danger" *ngIf="addPlaceForm.controls.Rate.errors && addPlaceForm.controls.Rate.touched">
+                            Invalid Rate
+                        </span>
+                    </div>
+                    
+                    <div class="center">
+                        <a routerLink="/"><button type="submit" class="btn btn-primary wd-125" [disabled]="addPlaceForm.invalid" style="background-color:#00a6d2;">Submit</button></a>
+                    </div>
+                    <div class="text-center text-success" *ngIf="added">{{addedMessage}}</div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+ -->

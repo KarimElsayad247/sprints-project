@@ -1,11 +1,37 @@
 #appContainer{
     height: 100%;
-    overflow-y:hidden ;
-    background-color: rgb(172, 114, 247);
+}
+.col-8{
+    width: 70%;
 }
 #cardStyle{
-    margin-top: 85px;
-    box-shadow: 5px 3px 10px 5px gray;
-    background-color: rgb(241, 173, 250);
+    margin-top: 40px;
+    box-shadow: 5px 3px 15px rgba(0, 0, 0, 0.4);
+    background-color: rgba(34,40,49,1) ;
+    color: #EEEEEE;
     border-radius: 10px;
+}
+.overlay {
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    background-color: rgba(57, 62, 70 ,0.3); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  }
+.style1{
+    width:100%;    
+    background-image: url('https://media.istockphoto.com/photos/portrait-of-student-with-disability-in-sports-court-at-school-picture-id1281045590?b=1&k=20&m=1281045590&s=170667a&w=0&h=EUb7uOWPFZKfAhGVoUGv2LjFfroagPdpz6zmgOrXfGo=') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* width: 100%; */
+    position: relative;
+}
+.btn-light , .btn:focus {
+    background-color: #393E46;
+    border-color: #393E46;
+    color: #EEEEEE;
+    box-shadow: none;
+}
+.btn{
+    color: #EEEEEE;
 }

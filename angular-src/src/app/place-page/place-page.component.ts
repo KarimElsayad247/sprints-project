@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PlacePageComponent implements OnInit {
 
   constructor() { }
-
+  
   ngOnInit(): void {
   } 
 
@@ -82,24 +82,36 @@ export class PlacePageComponent implements OnInit {
   rateCalc (event: any) {
     let sumOfTerms = this.place.rate  * this.place.ratesNumber
     this.place.ratesNumber ++
-    sumOfTerms += event.target.value
+    sumOfTerms += parseInt(event.target.value)
     this.place.rate = sumOfTerms / (this.place.ratesNumber ) 
-    console.log( this.place.rate)
+    console.log(event.target.value)
+    console.log(this.place.rate)
   }
   addReview(event: any) {
     if(event.target.previousElementSibling.value){
       console.log(   event.target.previousElementSibling.value )
     this.comments.unshift(event.target.previousElementSibling.value)
-
     }
-
     const date = new Date();
-
-    // const hour = date.getHours()
-    // const minute = date.getMinutes()
-
   }
+ 
+  status: boolean = false;
+  fav=[""]
+  
+  heartClick(event: any){
+    if(this.status === false)
+    { 
+      this.status = !this.status; 
+      this.fav.push(this.place.name)
+    }
+    else{
 
+      this.status =false;
+    }
+    
+    console.log(this.fav)
+  }
+  
 }
 
 

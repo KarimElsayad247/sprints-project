@@ -11,22 +11,20 @@ export class FavComponent implements OnInit {
  
   constructor() { }
  
-  public favs = [{imgUrl:"assets/image/.jpg",rate:2.5,name:"shshhsh"},{imgUrl:"assets/image/bedroom5.jpg",rate:2,name:"shshhsh"}, {imgUrl:"assets/image/bedroom6.jpg",rate:3,name:"shshhsh"}];
+  public favs = [{imgUrl:"assets/image/.jpg",rate:2.5,name:"shshhsh"},{imgUrl:"assets/image/.jpg",rate:2,name:"shshhsh"}, {imgUrl:"assets/image/.jpg",rate:3,name:"shshhsh"}];
   ngOnInit(): void {
   
   }
-addtofav(){
- 
-this.favs.push({imgUrl:"t-shirt",rate:5,name:"shshhsh"});
-
- }
- remove(item:any){
-let index= this.favs.indexOf(item); 
-this.favs.splice(index,1);
- }
- counter(i: number) {
-  return new Array(i);
-}
+  addtofav(){
+  this.favs.push({imgUrl:"t-shirt",rate:5,name:"shshhsh"});
+  }
+  remove(item:any){
+  let index= this.favs.indexOf(item); 
+  this.favs.splice(index,1);
+  }
+  counter(i: number) {
+    return new Array(i);
+  }
 
 
 }

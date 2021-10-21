@@ -3,30 +3,29 @@
     <div class="container">
         <div class="py-5 text-center bcgImg ">
 
-          <img class="d-block mx-auto mb-4 profile-img"  [src]="user.itemImageUrl ? user.itemImageUrl :'/assets/images/profile.jpg'" alt="profile" >
+          <img class="d-block mx-auto mb-4 profile-img"  [src]="user.itemImageUrl ? user.itemImageUrl :'/assets/image/profile.jpg'" alt="profile" >
           <label class="add-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
           </svg>
           <input class="insert-img" id="fileInput" type='file' (change)="onSelectFile($event)">
           </label>    
-          <h2>  {{user.name | titlecase }} {{user.lastName | titlecase }} </h2>
+          <h2 style="color: #112e51;">  {{user.name | titlecase }} {{user.lastName | titlecase }} </h2>
           <p class="lead">  {{user.location}}</p>
         </div>
    
         <div class="row">
-
-          <div class="col-md-4 order-md-2 mb-4 favourites">
-              <div class=" filterBcg ">
-            <h4 class="d-flex justify-content-center align-self-center fav-p">
-                <!-- <a href="#" class="d-flex align-self-center ">YOUR FAVOURITES</a> -->
-                <p  class="d-flex align-self-center ">YOUR FAVOURITES</p>
-            </h4>
-        </div>
-          </div>
+            <div class="col-md-4 order-md-2 mb-4 favourites" routerLink="/fav">
+                <div class=" filterBcg ">
+                  <h4 class="d-flex justify-content-center align-self-center fav-p">
+                      <!-- <a href="#" class="d-flex align-self-center ">YOUR FAVOURITES</a> -->
+                      <p  class="d-flex align-self-center fav">YOUR FAVOURITES</p>
+                  </h4>
+                </div>  
+            </div>
           <div class="separator"> </div>
           <div class="col-md-8 order-md-1">
-            <h4 class="mb-3"> Personal Information</h4>
+            <h4 class="mb-3" style="color: #112e51;"> Personal Information</h4>
             <form class="needs-validation" novalidate>
               <div class="row">
                 <div class="col-md-6 mb-3">
@@ -56,14 +55,14 @@
 
   
                <div class="mb-3">
-                <label for="address2">password </label>
+                <label for="address2">Password </label>
                 <input type="password" class="form-control"   placeholder="Password">
 
               </div> 
   
               <div class="row">
                 <div class="col-md-5 mb-3">
-                  <label for="city">city</label>
+                  <label for="city">City</label>
                   <select  (change)="selectChangeHandler($event)"  class="custom-select d-block w-100" id="city" required>
                     <option  value="">Choose...</option>
                     <option *ngFor="let city of cities "  >{{city}}</option>
@@ -73,7 +72,7 @@
                   </div>
                 </div>
                 <div class="col-md-4 mb-3">
-                  <label for="region">region</label>
+                  <label for="region">Region</label>
                   <select class="custom-select d-block w-100"  required>
                     <option value="">Choose...</option>
                     <option>Haram</option>

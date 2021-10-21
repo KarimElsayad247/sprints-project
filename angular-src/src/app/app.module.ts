@@ -10,7 +10,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './home/navbar/navbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { BodyComponent } from './home/body/body.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { CardComponent } from './home/body/card/card.component';
@@ -25,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingModule } from 'ng-starrating';
-import {AuthservicesService} from './services/authservices.service';
+import { FilterPipe } from './filter.pipe';
+// import {IvyCarouselModule} from 'angular-responsive-carousel'; IvyCarouselModule
 
 @NgModule({
   declarations: [
@@ -44,12 +45,15 @@ import {AuthservicesService} from './services/authservices.service';
     AddPlaceComponent,
     MainpageComponent,
     FavComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule, FormsModule, appRoutingModule , NgImageSliderModule ,BrowserAnimationsModule,ReactiveFormsModule, NgbModule,
-    HttpClientModule,CommonModule,RatingModule, NgbModule
+    HttpClientModule,CommonModule,RatingModule, NgbModule 
   ],
-  providers: [AuthservicesService],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {   
+
+}

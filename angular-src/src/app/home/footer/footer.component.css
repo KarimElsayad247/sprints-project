@@ -3,3 +3,9 @@
     justify-content: center;
     display: flex;
 }
+.fstyle{
+    margin-top: auto;  
+    background-color: #FFD369; 
+    color: #222831;
+    box-shadow: -5px -5px 15px  rgba(0, 0, 0, 0.3);
+}

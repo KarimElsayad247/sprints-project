@@ -5,3 +5,29 @@
 .wd-125{
     width: 125px;
 }
+.b-c , .btn:focus{
+    background-color: #FFD369;
+    border-color: #FFD369;
+    color:#222831;
+}
+.I-C{
+    background-color:#393E46;
+    border-color:#393E46;
+    color: #EEEEEE;
+}
+.form-control:focus{
+    box-shadow: none;
+}
+.required:after {
+    content:" *";
+    color: red;
+}
+.space{
+    width: 48%;
+}
+.M-0{
+    margin-left: 5px;
+}
+.form-check-label{
+    background:none;
+}

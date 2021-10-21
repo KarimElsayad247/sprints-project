@@ -19,9 +19,7 @@ const routes: Routes =[
   { path: 'auth', component: AuthComponent},
   {path : 'fav',component:FavComponent},
   {path : 'mainpage',component:MainpageComponent},
-  { path: '**', component: NotfoundComponent},
-  
-
+  { path: '**', component: NotfoundComponent}
 ]
 @NgModule({
   declarations: [],
