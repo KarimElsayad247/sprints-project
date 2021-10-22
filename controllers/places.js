@@ -60,7 +60,7 @@ exports.getPlaces = asyncHandler(async (req, res, next) => {
 //@route        GET /api/v1/categories/:categoryId/places/:placeId
 //@access       Public
 exports.getPlace = asyncHandler(async (req, res, next) => {
-  const place = await Place.findById(req.params.id).populate({
+  const place = await Place.findById(req.params.placeId).populate({
     path: "category",
   });
 

@@ -1,11 +1,15 @@
 const router = require("express").Router();
 const placesController = require("../controllers/places");
 
+const reviewsRouter = require("./reviews");
+
 const Category = require("../models/Category");
 
 const advancedResults = require("../middleware/advancedResults");
 
 const { protect, authorize } = require("../middleware/auth");
+
+router.use("/:placeId/reviews", reviewsRouter);
 
 router
   .route("/categories")

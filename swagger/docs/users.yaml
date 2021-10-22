@@ -1,0 +1,85 @@
+paths:
+  /api/v1/categories/{categoryId}/places:
+    get:
+      tags:
+      - developers
+      - users
+      summary: get all places of a specific category
+      operationId: getAllPlaces
+      description: |
+        Get all Places of a specific Categories of places to visit
+      parameters:
+      - in: path
+        name: categoryId
+        required: true
+        schema:
+          type: string
+          description: The Id of the Category
+      - in: query
+        name: limit
+        description: maximum number of records to return
+        type: integer
+        format: int32
+        minimum: 1
+        # maximum: 50
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CategoryItems'
+        400:
+          description: bad input parameter
+definitions:
+  CategoryItems:
+    type: object
+    required:
+      - success
+      - count
+      - data
+    properties:
+      id:
+        type: string
+        example: 616bfd1b2458ec97206f4ba0
+      name:
+        type: string
+        example: Theatre
+      palces:
+        type: array
+        items:
+          $ref: '#/definitions/Place'
+  CategoryItem:
+    type: object
+    required:
+      - id
+      - name
+      - places
+    properties:
+      id:
+        type: string
+        example: 616bfd1b2458ec97206f4ba0
+      name:
+        type: string
+        example: Theatre
+      palces:
+        type: array
+        items:
+          $ref: '#/definitions/Place'
+  Place:
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: string
+        example: 616bfd1b2458ec97206f4ba0
+      name:
+        type: string
+        example: Cinema Metro
+
+basePath: /api/v1
+schemes:
+  - http
+  - https
