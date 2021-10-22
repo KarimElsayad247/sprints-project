@@ -9,6 +9,7 @@ WORKDIR /app
 COPY package*.json /app/
  
 # Install any needed packages
+RUN npm i
 RUN npm ci
  
 # Bundle app source
