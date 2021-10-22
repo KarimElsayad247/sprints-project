@@ -26,6 +26,7 @@ pipeline {
             steps {
                 echo "========docker-compose build ========"
                 sh """
+                    docker system prune -y
                     docker-compose build
                 """    
             }
