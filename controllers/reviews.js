@@ -1,18 +1,23 @@
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/asyncHandler");
-const Comment = require("../models/Comment");
+const Review = require("../models/Review");
 
-//@desc         Get All Comments of a Place
-//@route        GET /api/v1/place/:placeId/comments
+//@desc         Get All Reviews of a Place
+//@route        GET /api/v1/reviews
+//@route        GET /api/v1/place/:placeId/reviews
 //@access       Public
-exports.getComments = asyncHandler(async (req, res, next) => {
-  const comments = await Comment.find({ place: req.params.placeId }).populate({
-    path: "user",
-    select: "name",
-  });
-  res
-    .status(200)
-    .json({ success: true, count: comments.length, data: comments });
+exports.getReviews = asyncHandler(async (req, res, next) => {
+  if (req.params.placeId) {
+    const reviews = await Review.find({ place: req.params.placeId });
+
+    return res.status(200).json({
+      success: true,
+      count: reviews.length,
+      data: reviews,
+    });
+  } else {
+    res.status(200).json(res.advancedResults);
+  }
 });
 
 //@desc         Get a Single Comment of a Place
