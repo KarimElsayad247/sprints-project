@@ -1,5 +1,78 @@
-<app-navbar></app-navbar>
+<section class="body">
+  <flash-messages></flash-messages>
+  <app-navbar1></app-navbar1>
+  <div class="content">
+    <div class="container rounded bg-white mt-5 mb-5">
+      <div class="row">
+        <div class="col-md-5 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5"
+              width="150px"
+              [src]="user.itemImageUrl ? user.itemImageUrl : 'https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'">
+              <span
+              class="font-weight-bold">{{user.Name}}</span><span class="text-black-50">{{user.email}}</span><span>
+            </span>
+            <label class="add-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+            <input class="insert-img" id="fileInput" type='file' (change)="onSelectFile($event)">
+          </label>    
+          </div>
+        </div>
+        <form class="form">
+          <div class="col-md-7 border-right">
+            <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Profile Settings</h4>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
+                    placeholder="Name" value="{{user.Name}}" ></div>
+              </div>
+              <div class="row">
+                <div class="col-md-12"><label class="labels">E-mail</label><input type="text" class="form-control"
+                    placeholder="Edit E-mail" value="{{user.email}}"></div>
+                <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control"
+                    placeholder="enter password" value=""></div>
+                <div class="col-md-12"><label class="labels">Address</label>
+                    <input type="text" class="form-control"
+                    placeholder="Edit Address" value="" >
+                  </div>
+                <!-- <div class="col-md-12"><label class="labels">Region</label> <select class="custom-select d-block w-100"
+                    required>
+                    <option value="">Choose...</option>
+                    <option>Haram</option>
+                    <option>Haram</option>
+                    <option>Haram</option>
+                    <option>Haram</option>
+                  </select></div> -->
+                <div class="col-md-12 mt-1"><label class="labels">Disability</label>
+                  <div class="d-block">
+                    <select class="custom-select d-block w-100"
+                    required>
+                    <option value="">Choose...</option>
+                    <option>Deaf</option>
+                    <option>Blind</option>
+                    <!-- <option>Blind</option> -->
+                    <!-- <option></option> -->
+                  </select>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
+                  Profile</button></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</section>
 
+
+<!-- <app-navbar></app-navbar>
     <div class="container">
         <div class="py-5 text-center bcgImg ">
 
@@ -9,18 +82,18 @@
             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
           </svg>
           <input class="insert-img" id="fileInput" type='file' (change)="onSelectFile($event)">
-          </label>    
+        </label>    
           <h2 style="color: #112e51;">  {{user.name | titlecase }} {{user.lastName | titlecase }} </h2>
           <p class="lead">  {{user.location}}</p>
         </div>
    
         <div class="row">
-            <div class="col-md-4 order-md-2 mb-4 favourites" routerLink="/fav">
+          <div class="col-md-4 order-md-2 mb-4 favourites" routerLink="/fav">
                 <div class=" filterBcg ">
                   <h4 class="d-flex justify-content-center align-self-center fav-p">
-                      <!-- <a href="#" class="d-flex align-self-center ">YOUR FAVOURITES</a> -->
+                      <a href="#" class="d-flex align-self-center ">YOUR FAVOURITES</a> 
                       <p  class="d-flex align-self-center fav">YOUR FAVOURITES</p>
-                  </h4>
+                    </h4>
                 </div>  
             </div>
           <div class="separator"> </div>
@@ -115,4 +188,4 @@
         <footer class="my-5 pt-5 "></footer>
       </div>
   
- 
+  -->

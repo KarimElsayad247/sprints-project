@@ -1,22 +1,74 @@
-<app-navbar></app-navbar>
-<div class="card-style" >
-    <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4 img img-fluid">
-              <div class="overlay">
-                  
-              </div>
-            <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<app-navbar1></app-navbar1>
+<div class="content">
+    <div class="ovrlay">
+        <div class="body">
+            <div class="card mb-3">
+                <div class="row g-0 container">
+                    <div class="col-md-6 discrb">
+                        <img class="img" src="https://images.unsplash.com/photo-1498578726655-4a7188d5b17c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h3 class="card-title">Add Place</h3>
+                            <form [formGroup]="addPlaceForm"  (ngSubmit)="addPlace()">
+                                <div class="mb-3">
+                                    <label class="form-label required" style="font-weight: 600;">Place Name</label>
+                                    <input type="text" class="form-control" formControlName="Name" style="border: 1px solid grey;"> 
+                                    <span class="text-danger" *ngIf="addPlaceForm.controls.Name.errors && addPlaceForm.controls.Name.touched">
+                                        Invalid Name
+                                    </span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label required" style="font-weight: 600;">Place Address</label>
+                                    <input type="text" class="form-control" formControlName="Address" style="border: 1px solid grey;"> 
+                                    <span class="text-danger" *ngIf="addPlaceForm.controls.Address.errors && addPlaceForm.controls.Address.touched">
+                                        Invalid Location
+                                    </span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label required" style="font-weight: 600;">Place Description</label>
+                                    <input type="text" class="form-control" formControlName="Description" style="border: 1px solid grey;"> 
+                                    <span class="text-danger" *ngIf="addPlaceForm.controls.Description.errors && addPlaceForm.controls.Description.touched">
+                                        Invalid Description
+                                    </span>
+                                </div>  
+                                
+                                <div class="mb-3">
+                                    <label class="form-label" style="font-weight: 600;">Place Phone</label>
+                                    <input type="tel" class="form-control" formControlName="Phone" style="border: 1px solid grey;"> 
+                                    <span class="text-danger" *ngIf="addPlaceForm.controls.Phone.errors && addPlaceForm.controls.Phone.touched">
+                                        Invalid Review
+                                    </span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label required" style="font-weight: 600;">Place Category</label>
+                                    <input type="text" class="form-control" formControlName="Category" style="border: 1px solid grey;"> 
+                                    <span class="text-danger" *ngIf="addPlaceForm.controls.Category.errors && addPlaceForm.controls.Category.touched">
+                                        Invalid Rate
+                                    </span>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required" style="font-weight: 600;">Upload Image</label>
+                                    <input type="text" class="form-control" formControlName="Category" style="border: 1px solid grey;"> 
+                                    <span class="text-danger" *ngIf="addPlaceForm.controls.Category.errors && addPlaceForm.controls.Category.touched">
+                                        Invalid Rate
+                                    </span>
+                                </div>
+                                
+                                <div class="center">
+                                    <a><button type="submit" class="b-c btn wd-125" [disabled]="addPlaceForm.invalid" style="background-color:#00a6d2;">Submit</button></a>
+                                </div>
+                                <div class="text-center text-success" *ngIf="added">{{addedMessage}}</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 </div>
 <app-footer></app-footer>
 <!-- 

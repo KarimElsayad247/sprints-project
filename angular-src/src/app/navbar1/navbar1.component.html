@@ -1,0 +1,33 @@
+<!-- <button type="submit" class="btn-link btn anchor text-muted navbar-btn"><a routerLink="/add_place" >Add Place</a></button>
+        <button type="submit" class="btn-link btn anchor text-muted navbar-btn"><a routerLink="/profile" >Profile</a></button>
+     -->
+     <nav class="navbar navbar-expand-lg nav-style">
+        <div class="container-fluid">
+          <i class="bg-image"></i>
+          <a class="navbar-brand" href="#">VZ</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li *ngIf="!auth1"><a class="nav-link active" routerLink="/auth">Login</a></li>
+              <li *ngIf="auth1" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-fill"></i>
+                </a>
+                <ul  class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+                  <li><a class="dropdown-item" routerLink="/fav">Favorites</a></li>
+                  <li><a class="dropdown-item" routerLink="/add_place">Add Place</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" (click)= "onLogoutclick()">Sign out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>

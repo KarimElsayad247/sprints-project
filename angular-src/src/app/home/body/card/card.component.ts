@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from '../../../services/home.service'; 
 
 @Component({
   selector: 'app-card',
@@ -6,29 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  startIndex: any = 1 ;
-  arrName=[
-    'Restaurants',
-    'Cinema',
-    'Parks',
-    'Hospitals',
-    'Unversities',
-    'Gouverments'
-  ]
- 
-  arr= [
-    {id:1,card:"card_1",},
-    {id:2,card:"card_2"},
-    {id:3,card:"card_3"},
-    {id:4,card:"card_4"},
-    {id:5,card:"card_5"},
-    {id:6,card:"card_6"},
-  ]
-  flag:boolean = true;
-  constructor() { }
+  categories:any
+  arrName =[]
+  arr = []
+
+  constructor(private home:HomeService) { }
+  
   ngOnInit(): void {
     this.Repeat();
+    this.home.getCategories().subscribe((data:any) =>{
+      this.categories = data.data
+    })
   }
+  
+  startIndex: any = 1 ;
+
+  flag:boolean = true;
   Repeat() {
     setTimeout(() => {
       this.__FunctionSlide();
@@ -48,12 +42,12 @@ export class CardComponent implements OnInit {
     if (this.startIndex > slides.length - 1) {
       this.startIndex = 0;
       const slide = slides[this.startIndex] as HTMLElement;
-      slide.style.display = 'block';
+      // slide.style.display = 'block';
       this.startIndex++;
     } else {
 
       const slide = slides[this.startIndex] as HTMLElement;
-      slide.style.display = 'block';
+      // slide.style.display = 'block';
       this.startIndex++;
     }
   }

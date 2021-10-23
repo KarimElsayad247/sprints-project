@@ -1,1 +1,22 @@
-<app-navbar></app-navbar>
+<section class="body">
+    <app-navbar1></app-navbar1>
+    <div class="content">
+        <div class="card" *ngFor="let el of (places) ; let i = index " >
+            <img  src="http://localhost:8080/{{el.gallery[0]}}" 
+            class="card-img" alt="Burger-Food">
+            <div class="card-img-overlay">
+              <h4 class="card-title" [routerLink]="['/categories', id, 'places', el._id]">{{el.name}}</h4>
+              <p class="card-text">{{el.description}}</p>
+              <div class="d-flex">
+                <h3 style="margin-top: 8px;">
+                    <i class="fa fa-star me-3 fa-lg" style="color: rgb(245, 238, 40);"> <span style="color: black; font-size: 30px;">
+                        {{el.averageRating}}</span></i></h3>
+            </div>
+              <button *ngIf="auth1" class="N-button" (click)="heart($event,el.id)"[ngClass]="arr[i].status ? 'Heart-R' : 'Heart-G'">
+                  <i class="bi bi-suit-heart-fill"></i>
+              </button>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</section>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router'
+import {HomeService} from '../services/home.service'
 
 @Component({
   selector: 'app-place-page',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./place-page.component.css']
 })
 export class PlacePageComponent implements OnInit {
-
-  constructor() { }
+  categoryId:any
+  placeId:any
+  place:any
+  reviews:any
+  constructor(private home:HomeService, private route:ActivatedRoute) { }
   
   ngOnInit(): void {
+    this.categoryId=this.route.snapshot.paramMap.get('categoryId');
+    this.placeId=this.route.snapshot.paramMap.get('placeId');
+    this.home.getPlace(this.categoryId, this.placeId).subscribe((data:any) =>{
+      this.place = data.data
+    })
+    this.home.GetallReviews(this.placeId).subscribe((data:any)=>{
+      this.reviews = data.data
+    })
   } 
 
 //////////////////////////////////////////image slider////////////////////////
@@ -57,60 +70,27 @@ export class PlacePageComponent implements OnInit {
   
 //////////////////////////////////////////end image slider////////////////////////
 
-  place={
-    name:" Al Asdeqaa"
-    , describtion:" our restaurant represent best services"
-    ,location: "alharam, Giza"
-    ,category:"restaurant"
-    ,rate: 3.4
-    ,ratesNumber: 10
+  
 
-  }
-  comments = ["wow","Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus ras purus odio, vestibulum in vulputate at, tempus viverra turpis.","Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus ras purus odio, vestibulum in vulputate at, tempus viverra turpis."];
-   firstName = "Ahmed"
-  user ={
-    name: this.firstName,
-    lastName :' Adel',
-    disability: 'blind',
-    email: 'ahmed@gmail.com'
-    ,location:'cairo'
-    ,itemImageUrl: null
-  }
-//  commentDetails={
-//    hour: 
-//  };
-  rateCalc (event: any) {
-    let sumOfTerms = this.place.rate  * this.place.ratesNumber
-    this.place.ratesNumber ++
-    sumOfTerms += parseInt(event.target.value)
-    this.place.rate = sumOfTerms / (this.place.ratesNumber ) 
-    console.log(event.target.value)
-    console.log(this.place.rate)
-  }
+
   addReview(event: any) {
-    if(event.target.previousElementSibling.value){
-      console.log(   event.target.previousElementSibling.value )
-    this.comments.unshift(event.target.previousElementSibling.value)
-    }
-    const date = new Date();
+    
   }
  
   status: boolean = false;
   fav=[""]
   
-  heartClick(event: any){
-    if(this.status === false)
-    { 
-      this.status = !this.status; 
-      this.fav.push(this.place.name)
-    }
-    else{
+  // heartClick(event: any){
+  //   if(this.status === false)
+  //   { 
+  //     this.status = !this.status; 
+  //     this.fav.push(this.place.name)
+  //   }
+  //   else{
 
-      this.status =false;
-    }
-    
-    console.log(this.fav)
-  }
+  //     this.status =false;
+  //   }
+  // }
   
 }
 

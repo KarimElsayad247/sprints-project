@@ -1,9 +1,8 @@
-@import "~bootstrap-icons/font/bootstrap-icons.css";
-
 @font-face {
-    font-family: name;
-    src: url("src/assets/fonts/FredokaOne-Regular.ttf");
+    font-family: bebas-Font;
+    src: url('src/assets/fonts/BebasNeue-Regular.ttf');
 }
+
 
 .design{
     display: flex;
@@ -13,4 +12,28 @@
 }
 .heart{
     gap: 30px;
+}
+
+.content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: #eee;
+    padding: 2% 0%;
+}
+
+.card{
+    margin-bottom: 2%;
+    margin-top: 1%;
+}
+
+.card-body{
+    background-color: #222831;
+    color: #eee;
+}
+
+.img-fluid{
+    width: 100%;
+    height: 100%;
 }

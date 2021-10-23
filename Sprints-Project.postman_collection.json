@@ -1,0 +1,2436 @@
+{
+	"info": {
+		"_postman_id": "b087bc4b-9786-4a51-a303-36507aa4fdce",
+		"name": "Sprints-Project",
+		"description": "Backend API for Sprints Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jane Doe\",\r\n    \"email\": \"jane@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"gender\": \"male\",\r\n    \"role\": \"admin\",\r\n    \"birthday\": \"1998-11-30\",\r\n    \"phone\": \"01094921738\",\r\n    \"address\": \"Address\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Add user to database with encrypted password"
+					},
+					"response": [
+						{
+							"name": "Register User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ahmed\",\r\n    \"email\": \"ahmed111@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"user\",\r\n    \"gender\": \"male\",\r\n    \"birthday\": \"1998-11-30\",\r\n    \"address\": \"Cairo, Egypt\",\r\n    \"phone\": \"01084921738\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/register",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQwOWFjZGRhOGUxMGQ2YzljYWQ0NSIsImlhdCI6MTYzNDk5NDYwNCwiZXhwIjoxNjM3NTg2NjA0fQ.zUVXe6XfgRZhGkXBB68Q1QUSXybf1G2hBSeZsowf-MQ; Path=/; Expires=Mon, 22 Nov 2021 13:10:04 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "198"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c6-wrTK8ne/bVBOIhL/CZnctvkIDFU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:10:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQwOWFjZGRhOGUxMGQ2YzljYWQ0NSIsImlhdCI6MTYzNDk5NDYwNCwiZXhwIjoxNjM3NTg2NjA0fQ.zUVXe6XfgRZhGkXBB68Q1QUSXybf1G2hBSeZsowf-MQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login the user using his email and password and return jwt token"
+					},
+					"response": [
+						{
+							"name": "Login User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"ahmed111@gmail.com\",\r\n    \"password\": \"12345\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/login",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQwOWFjZGRhOGUxMGQ2YzljYWQ0NSIsImlhdCI6MTYzNDk5NDY4OSwiZXhwIjoxNjM3NTg2Njg5fQ.ekVX7RXDDjph4pAW0tBNBWFf531lj6brUMYhrL9bcFQ; Path=/; Expires=Mon, 22 Nov 2021 13:11:29 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "198"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c6-yxiQLV2MTNtFSq9IRcQgKytYDwo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:11:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzQwOWFjZGRhOGUxMGQ2YzljYWQ0NSIsImlhdCI6MTYzNDk5NDY4OSwiZXhwIjoxNjM3NTg2Njg5fQ.ekVX7RXDDjph4pAW0tBNBWFf531lj6brUMYhrL9bcFQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Logged In User Via Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						},
+						"description": "get current logged in user"
+					},
+					"response": [
+						{
+							"name": "Get Logged In User Via Token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/me",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12b-D/H+Mhc2xZWNkEJp1eRosCYDQvQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:17:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617409acdda8e10d6c9cad45\",\n        \"name\": \"ahmed\",\n        \"email\": \"ahmed111@gmail.com\",\n        \"role\": \"user\",\n        \"gender\": \"male\",\n        \"birthday\": \"1998-11-30T00:00:00.000Z\",\n        \"phone\": \"01084921738\",\n        \"address\": \"Cairo, Egypt\",\n        \"photo\": \"male.jpg\",\n        \"favourites\": [],\n        \"createdAt\": \"2021-10-23T13:10:04.090Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sami\",\r\n    \"email\": \"sasmi@gmail.com\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						},
+						"description": "Update profile of the current logged in user"
+					},
+					"response": [
+						{
+							"name": "Update Profile",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Sami\",\r\n    \"email\": \"sasmi@gmail.com\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/me",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "321"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"141-9hnyIIxDr8Zw193hDAS6ut//arc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:39:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"61740caaa0403038dc410dfd\",\n        \"name\": \"Sami\",\n        \"email\": \"sasmi@gmail.com\",\n        \"role\": \"user\",\n        \"gender\": \"male\",\n        \"birthday\": \"1998-11-30T00:00:00.000Z\",\n        \"phone\": \"01084921738\",\n        \"address\": \"Cairo, Egypt\",\n        \"photo\": \"photo_61740caaa0403038dc410dfd.jpg\",\n        \"favourites\": [],\n        \"createdAt\": \"2021-10-23T13:22:50.713Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Upload Profile Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Ramadan/Desktop/external-content.duckduckgo.com.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/photo",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"photo"
+							]
+						},
+						"description": "Upload profile image for the current user"
+					},
+					"response": [
+						{
+							"name": "Upload Profile Image",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Ramadan/Desktop/external-content.duckduckgo.com.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/users/photo",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"photo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-VBRD/I3pvcrDQj3F0+MiEve+K7A\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:37:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": \"photo_61740caaa0403038dc410dfd.jpg\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Routes for Authenticating Users of the application"
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/categories",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						},
+						"description": "Get all categories from the Database"
+					},
+					"response": [
+						{
+							"name": "Get All Categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/categories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "761"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f9-UVOeQ2gVf9JrY4JxA+76dt55Hcc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 10 Oct 2021 15:51:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 5,\n    \"pagination\": {},\n    \"data\": [\n        {\n            \"_id\": \"615f50803e240e0c1a00eec0\",\n            \"name\": \"Cinema\",\n            \"__v\": 0,\n            \"places\": [\n                {\n                    \"_id\": \"61607f071a954bc61ffe8bf9\",\n                    \"name\": \"Metro\",\n                    \"phone\": \"01094921738\",\n                    \"description\": \"This is the description\",\n                    \"address\": \"30 Ahmed Dawood St\",\n                    \"category\": \"615f50803e240e0c1a00eec0\",\n                    \"__v\": 0\n                }\n            ],\n            \"id\": \"615f50803e240e0c1a00eec0\"\n        },\n        {\n            \"_id\": \"615f50893e240e0c1a00eec2\",\n            \"name\": \"Resturant\",\n            \"__v\": 0,\n            \"places\": [],\n            \"id\": \"615f50893e240e0c1a00eec2\"\n        },\n        {\n            \"_id\": \"615f509a3e240e0c1a00eec4\",\n            \"name\": \"Coffee Shop\",\n            \"__v\": 0,\n            \"places\": [],\n            \"id\": \"615f509a3e240e0c1a00eec4\"\n        },\n        {\n            \"_id\": \"615f50a33e240e0c1a00eec6\",\n            \"name\": \"Theatre\",\n            \"__v\": 0,\n            \"places\": [],\n            \"id\": \"615f50a33e240e0c1a00eec6\"\n        },\n        {\n            \"_id\": \"615f50ab3e240e0c1a00eec8\",\n            \"name\": \"Park\",\n            \"__v\": 0,\n            \"places\": [],\n            \"id\": \"615f50ab3e240e0c1a00eec8\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get All Categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/categories?sort=name&page=2&limit=3",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "name"
+										},
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "limit",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "422"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a6-qrBnFhwRlNMqJPh8qfmQq7UETLA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:21:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 3,\n    \"pagination\": {\n        \"next\": {\n            \"page\": 3,\n            \"limit\": 3\n        },\n        \"previous\": {\n            \"page\": 1,\n            \"limit\": 3\n        }\n    },\n    \"data\": [\n        {\n            \"_id\": \"616bfd1b2458ec97206f4b9a\",\n            \"name\": \"Circus\",\n            \"__v\": 0,\n            \"places\": [],\n            \"id\": \"616bfd1b2458ec97206f4b9a\"\n        },\n        {\n            \"_id\": \"616bfd1b2458ec97206f4b99\",\n            \"name\": \"Concert\",\n            \"__v\": 0,\n            \"places\": [],\n            \"id\": \"616bfd1b2458ec97206f4b99\"\n        },\n        {\n            \"_id\": \"616bfd1b2458ec97206f4ba6\",\n            \"name\": \"Festival\",\n            \"__v\": 0,\n            \"places\": [],\n            \"id\": \"616bfd1b2458ec97206f4ba6\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add New Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Tourism Site",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "a simple description",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Ramadan/Desktop/external-content.duckduckgo.com.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/categories",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						},
+						"description": "Logged in users can add a new Category to the Database"
+					},
+					"response": [
+						{
+							"name": "Add New Category",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Tourism Site",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "a simple description",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Ramadan/Desktop/external-content.duckduckgo.com.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/categories",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:23:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {}\n}"
+						}
+					]
+				}
+			],
+			"description": "Routes for Handling the Categories of places in the Database"
+		},
+		{
+			"name": "Places",
+			"item": [
+				{
+					"name": "Get All Places of a Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/categories/616bfd1b2458ec97206f4ba2/places",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"616bfd1b2458ec97206f4ba2",
+								"places"
+							],
+							"query": [
+								{
+									"key": "select",
+									"value": "name",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get all places that are under a specific category from the Database"
+					},
+					"response": [
+						{
+							"name": "Get All Places of a Category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/categories/616bfd1b2458ec97206f4ba2/places",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"616bfd1b2458ec97206f4ba2",
+										"places"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "240"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f0-Vxp4GFwF4FiHPKZRrP8G1IBrIrU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Oct 2021 15:26:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 1,\n    \"data\": [\n        {\n            \"_id\": \"6172d7ae342a0c3789215c75\",\n            \"name\": \"Egypt Mall\",\n            \"description\": \"A test for a description\",\n            \"address\": \"6th October\",\n            \"category\": \"616bfd1b2458ec97206f4ba2\",\n            \"createdAt\": \"2021-10-22T15:24:30.407Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a Place",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/categories/616bfd1b2458ec97206f4ba2/places/6172d99674eb05cb39db28d9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"616bfd1b2458ec97206f4ba2",
+								"places",
+								"6172d99674eb05cb39db28d9"
+							]
+						},
+						"description": "Get a single place from the Database"
+					},
+					"response": [
+						{
+							"name": "Get a Place",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/categories/616bfd1b2458ec97206f4ba2/places/6172d99674eb05cb39db28d9",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"616bfd1b2458ec97206f4ba2",
+										"places",
+										"6172d99674eb05cb39db28d9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "324"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"144-2hoZiuCmkgho3fucmVwNYPY0ZsE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:24:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"gallery\": [],\n        \"_id\": \"6172d99674eb05cb39db28d9\",\n        \"name\": \"Egypt Mall\",\n        \"description\": \"A test for a description\",\n        \"address\": \"6th October\",\n        \"category\": {\n            \"_id\": \"616bfd1b2458ec97206f4ba2\",\n            \"name\": \"Mall\",\n            \"__v\": 0,\n            \"id\": \"616bfd1b2458ec97206f4ba2\"\n        },\n        \"createdAt\": \"2021-10-22T15:32:38.078Z\",\n        \"__v\": 0,\n        \"averageRating\": 3.75\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a Place",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Opera\",\r\n    \"description\": \"Egyptian Opera House\",\r\n    \"address\": \"6th October\",\r\n    \"category\": \"61735b742921ec9db413135e\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/categories/61735b742921ec9db413135e/places",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"61735b742921ec9db413135e",
+								"places"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Logged in users can add a new place to a specific category of places"
+					},
+					"response": [
+						{
+							"name": "Add a Place",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Egypt Mall\",\r\n    \"description\": \"A test for a description\",\r\n    \"address\": \"6th October\",\r\n    \"category\": \"616bfd1b2458ec97206f4ba2\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/categories/616bfd1b2458ec97206f4ba2/places",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"616bfd1b2458ec97206f4ba2",
+										"places"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "228"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e4-OliLUgdjj2a/laFqKV17/J30oks\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Oct 2021 15:24:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"Egypt Mall\",\n        \"description\": \"A test for a description\",\n        \"address\": \"6th October\",\n        \"category\": \"616bfd1b2458ec97206f4ba2\",\n        \"_id\": \"6172d7ae342a0c3789215c75\",\n        \"createdAt\": \"2021-10-22T15:24:30.407Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a Place",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mall of Egypt\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/categories/61735b742921ec9db413135e/places/61735b742921ec9db413135e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"61735b742921ec9db413135e",
+								"places",
+								"61735b742921ec9db413135e"
+							]
+						},
+						"description": "Logged in users can update a place information"
+					},
+					"response": [
+						{
+							"name": "Update a Place",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Mall of Egypt\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/categories/61735b742921ec9db413135e/places/61735b742921ec9db413135e",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"61735b742921ec9db413135e",
+										"places",
+										"61735b742921ec9db413135e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "360"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"168-g/oB25IG5rkVFtImlqbryQUxVzA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:26:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"61735b742921ec9db413135e\",\n        \"name\": \"Mall of Egypt\",\n        \"description\": \"A test for a description\",\n        \"address\": \"6th October\",\n        \"category\": \"616bfd1b2458ec97206f4ba2\",\n        \"createdAt\": \"2021-10-23T00:46:44.369Z\",\n        \"__v\": 0,\n        \"gallery\": [\n            \"photo_04231eef027e9031a028.jpg\",\n            \"photo_5cf0ddee8f83882db2f2.jpg\",\n            \"photo_3a7e598476a16d36a05f.jpg\"\n        ],\n        \"averageRating\": 5\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Append to the Photo Gallery",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "1",
+									"type": "file",
+									"src": "/C:/Users/Ramadan/Desktop/external-content.duckduckgo.com.jpg"
+								},
+								{
+									"key": "2",
+									"type": "file",
+									"src": "/C:/Users/Ramadan/Desktop/E3NKxtsXIAYFDw9.jpg"
+								},
+								{
+									"key": "3",
+									"type": "file",
+									"src": "/C:/Users/Ramadan/Desktop/E3J0_3iXMAgANfL.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/categories/61735b742921ec9db413135e/places/61735b742921ec9db413135e/gallery",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"61735b742921ec9db413135e",
+								"places",
+								"61735b742921ec9db413135e",
+								"gallery"
+							]
+						},
+						"description": "Logged in users can add to the photo gallery of a specific place"
+					},
+					"response": [
+						{
+							"name": "Append to the Photo Gallery",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "1",
+											"type": "file",
+											"src": "/C:/Users/Ramadan/Desktop/external-content.duckduckgo.com.jpg"
+										},
+										{
+											"key": "2",
+											"type": "file",
+											"src": "/C:/Users/Ramadan/Desktop/E3NKxtsXIAYFDw9.jpg"
+										},
+										{
+											"key": "3",
+											"type": "file",
+											"src": "/C:/Users/Ramadan/Desktop/E3J0_3iXMAgANfL.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/categories/61735b742921ec9db413135e/places/61735b742921ec9db413135e/gallery",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"61735b742921ec9db413135e",
+										"places",
+										"61735b742921ec9db413135e",
+										"gallery"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7c-qG0ZSELnEd/ybOrg12dX5ICCE5c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:27:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        \"photo_7cbd33cadf392ee18ec9.jpg\",\n        \"photo_eedbc9bca21a585cbdba.jpg\",\n        \"photo_cd7f52093871ccd6e024.jpg\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Place",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/categories/616bfd1b2458ec97206f4ba2/places/6172d9c374eb05cb39db28de",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"616bfd1b2458ec97206f4ba2",
+								"places",
+								"6172d9c374eb05cb39db28de"
+							]
+						},
+						"description": "Only admins can delete places"
+					},
+					"response": [
+						{
+							"name": "Only Admins Can Delete A Place",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/categories/615f50803e240e0c1a00eec0/61607f071a954bc61ffe8bf9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"615f50803e240e0c1a00eec0",
+										"61607f071a954bc61ffe8bf9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 10 Oct 2021 15:53:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {}\n}"
+						},
+						{
+							"name": "Normal User Cannot Delete A Place",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/categories/616bfd1b2458ec97206f4ba2/places/6172d9c374eb05cb39db28de",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categories",
+										"616bfd1b2458ec97206f4ba2",
+										"places",
+										"6172d9c374eb05cb39db28de"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'none'"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "740"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:27:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>Error: User role user is not authorized to access this route\n            <br> &nbsp; &nbsp;at D:\\CodePlayGround\\GitHub\\temp\\test-sprints-project\\middleware\\auth.js:45:9\n            <br> &nbsp; &nbsp;at Layer.handle [as handle_request] (D:\\CodePlayGround\\GitHub\\temp\\test-sprints-project\\node_modules\\express\\lib\\router\\layer.js:95:5)\n            <br> &nbsp; &nbsp;at next (D:\\CodePlayGround\\GitHub\\temp\\test-sprints-project\\node_modules\\express\\lib\\router\\route.js:137:13)\n            <br> &nbsp; &nbsp;at D:\\CodePlayGround\\GitHub\\temp\\test-sprints-project\\middleware\\auth.js:33:5\n            <br> &nbsp; &nbsp;at processTicksAndRejections (internal/process/task_queues.js:95:5)\n        </pre>\n    </body>\n</html>"
+						}
+					]
+				}
+			],
+			"description": "Routes for Handling the Places in the Database"
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Get all Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/places/61735b742921ec9db413135e/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"places",
+								"61735b742921ec9db413135e",
+								"reviews"
+							]
+						},
+						"description": "Get all reviews from database and populate it with the place"
+					},
+					"response": [
+						{
+							"name": "Get all Reviews",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/places/61735b742921ec9db413135e/reviews",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"places",
+										"61735b742921ec9db413135e",
+										"reviews"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "241"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f1-/RcpJ6YlZV/9bS5SjY6XxZeZZ9I\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:34:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 1,\n    \"data\": [\n        {\n            \"_id\": \"61737d2bfa4cded3138a9568\",\n            \"title\": \"A Nice Title\",\n            \"text\": \"a nice text\",\n            \"rating\": 5,\n            \"user\": \"6172d97774eb05cb39db28d3\",\n            \"place\": \"61735b742921ec9db413135e\",\n            \"createdAt\": \"2021-10-23T03:10:35.139Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"A Nice Title\",\r\n    \"text\": \"a nice text\",\r\n    \"rating\": 4\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/places/61735b742921ec9db413135e/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"places",
+								"61735b742921ec9db413135e",
+								"reviews"
+							]
+						},
+						"description": "Logged in users can add a review to any place with title, body, and rating"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"A Nice Title\",\r\n    \"text\": \"a nice text\",\r\n    \"rating\": 4\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/places/61735b742921ec9db413135e/reviews",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"places",
+										"61735b742921ec9db413135e",
+										"reviews"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e5-AU664J/yJPitK49Oae2kAtWHN3M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:34:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"title\": \"A Nice Title\",\n        \"text\": \"a nice text\",\n        \"rating\": 4,\n        \"user\": \"61740caaa0403038dc410dfd\",\n        \"place\": \"61735b742921ec9db413135e\",\n        \"_id\": \"61740f70f98299874f332ba1\",\n        \"createdAt\": \"2021-10-23T13:34:40.876Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Routes for Handling the Reviews of places in the Database"
+		},
+		{
+			"name": "Disability",
+			"item": [
+				{
+					"name": "Get All Disabilities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null,
+						"description": "Get all Disabilities from the Database to let the end user choose one of them"
+					},
+					"response": [
+						{
+							"name": "Using Limit and Page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/disabilities?limit=5&page=2",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"disabilities"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "5"
+										},
+										{
+											"key": "page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "447"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1bf-JBwA442br4AzCoPW2FdJ48KtgVY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:32:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 5,\n    \"pagination\": {\n        \"next\": {\n            \"page\": 3,\n            \"limit\": 5\n        },\n        \"previous\": {\n            \"page\": 1,\n            \"limit\": 5\n        }\n    },\n    \"data\": [\n        {\n            \"_id\": \"616bfd152458ec97206f4b56\",\n            \"name\": \"Leprosy Cured Persons\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b57\",\n            \"name\": \"Hearing Impairment\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b54\",\n            \"name\": \"Blindness\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b55\",\n            \"name\": \"Low-vision\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b5b\",\n            \"name\": \"Mental Illness\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get All Disabilities",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/disabilities",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"disabilities"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "782"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30e-NB/slzbVodnHOkNYeOBtVUi9YG8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:32:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 10,\n    \"pagination\": {\n        \"next\": {\n            \"page\": 2,\n            \"limit\": 10\n        }\n    },\n    \"data\": [\n        {\n            \"_id\": \"616bfd152458ec97206f4b5e\",\n            \"name\": \"Muscular Dystrophy\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b5f\",\n            \"name\": \"Chronic Neurological Conditions\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b59\",\n            \"name\": \"Dwarfism\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b5a\",\n            \"name\": \"Intellectual Disability\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b58\",\n            \"name\": \"Locomotor Disability\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b56\",\n            \"name\": \"Leprosy Cured Persons\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b57\",\n            \"name\": \"Hearing Impairment\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b54\",\n            \"name\": \"Blindness\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b55\",\n            \"name\": \"Low-vision\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"616bfd152458ec97206f4b5b\",\n            \"name\": \"Mental Illness\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "Routes for Handling the Disabilities list in the Database"
+		},
+		{
+			"name": "Favourites",
+			"item": [
+				{
+					"name": "Get All Favorite Places",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/users/favourites",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"favourites"
+							]
+						},
+						"description": "Logged in users can view their own favourite places"
+					},
+					"response": [
+						{
+							"name": "Get All Favorite Places",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/users/favourites",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"favourites"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "607"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25f-UeXd6ukqe17q06uGTJQhPlVPgyc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 12:18:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 2,\n    \"data\": [\n        {\n            \"gallery\": [],\n            \"_id\": \"6172d99674eb05cb39db28d9\",\n            \"name\": \"Egypt Mall\",\n            \"description\": \"A test for a description\",\n            \"address\": \"6th October\",\n            \"category\": \"616bfd1b2458ec97206f4ba2\",\n            \"createdAt\": \"2021-10-22T15:32:38.078Z\",\n            \"__v\": 0,\n            \"averageRating\": 3.75\n        },\n        {\n            \"_id\": \"61735b742921ec9db413135e\",\n            \"name\": \"Test Mall\",\n            \"description\": \"A test for a description\",\n            \"address\": \"6th October\",\n            \"category\": \"616bfd1b2458ec97206f4ba2\",\n            \"createdAt\": \"2021-10-23T00:46:44.369Z\",\n            \"__v\": 0,\n            \"gallery\": [\n                \"photo_04231eef027e9031a028.jpg\",\n                \"photo_5cf0ddee8f83882db2f2.jpg\",\n                \"photo_3a7e598476a16d36a05f.jpg\"\n            ],\n            \"averageRating\": 5\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get A Favourite Place",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/users/favourites/6172d99674eb05cb39db28d9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"favourites",
+								"6172d99674eb05cb39db28d9"
+							]
+						},
+						"description": "Returns one Favorite place of the places favorited by the logged in user"
+					},
+					"response": [
+						{
+							"name": "Add a Favourite Place",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"favouriteId\": \"61735b742921ec9db413135e\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/users/avourites/6172d99674eb05cb39db28d9",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"avourites",
+										"6172d99674eb05cb39db28d9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "264"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"108-bo6FRHAhfyVthQDmIjw+oN9dxrk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 12:17:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"gallery\": [],\n            \"_id\": \"6172d99674eb05cb39db28d9\",\n            \"name\": \"Egypt Mall\",\n            \"description\": \"A test for a description\",\n            \"address\": \"6th October\",\n            \"category\": \"616bfd1b2458ec97206f4ba2\",\n            \"createdAt\": \"2021-10-22T15:32:38.078Z\",\n            \"__v\": 0,\n            \"averageRating\": 3.75\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a Favourite Place",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"favouriteId\": \"61735b742921ec9db413135e\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/61736cd0760ece488d184340/favourites",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"61736cd0760ece488d184340",
+								"favourites"
+							]
+						},
+						"description": "Logged in users can append to the list of their favorite places"
+					},
+					"response": [
+						{
+							"name": "Add a Favourite Place",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"favouriteId\": \"61735b742921ec9db413135e\"\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/users/favourites",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"favourites"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4f-mkquhr59mWLpCGk1qwOuREuKYUw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 12:11:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        \"6172d99674eb05cb39db28d9\",\n        \"61735b742921ec9db413135e\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Favourite Place",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/users/favourites/61735b742921ec9db413135e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"favourites",
+								"61735b742921ec9db413135e"
+							]
+						},
+						"description": "Logged in users can delete one place from their favorite places list"
+					},
+					"response": [
+						{
+							"name": "Delete a Favourite Place",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/users/favourites/61735b742921ec9db413135e",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"favourites",
+										"61735b742921ec9db413135e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 12:28:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {}\n}"
+						}
+					]
+				}
+			],
+			"description": "Routes for Handling the favourite places of the logged in user"
+		}
+	]
+}

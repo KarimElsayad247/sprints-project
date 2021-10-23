@@ -1,21 +1,22 @@
+<flash-messages></flash-messages>
 <form [formGroup]="loginForm" (ngSubmit)="login()">
   <div class="mb-3">
     <label class="form-label">Email address</label>
-    <input type="email" class="form-control I-C" formControlName="email">
+    <input type="email" class="form-control I-C" [(ngModel)]="email" formControlName="email">
     <span class="text-danger" *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched">
       Invalid Email
     </span>
   </div>
   <div class="mb-3">
     <label class="form-label">Password</label>
-    <input type="password" class="form-control I-C" formControlName="password">
+    <input type="password" class="form-control I-C" [(ngModel)]="password" formControlName="password">
     <span class="text-danger" *ngIf="loginForm.controls.password.errors && loginForm.controls.password.touched">
       Invalid Password
     </span>
   </div>
 
   <div class="center">
-    <a routerLink="/"><button type="submit" class="btn b-c wd-125" [disabled]="loginForm.invalid">Submit</button></a>
+    <a><button type="submit" class="btn b-c wd-125" [disabled]="loginForm.invalid">Submit</button></a>
   </div>
 </form>
 <div class="text-center text-success" *ngIf="success">{{successMessage}}</div>

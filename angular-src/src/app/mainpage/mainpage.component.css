@@ -1,0 +1,54 @@
+.content{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.card{
+    width: 50%;
+    height: 60%;
+    margin: 2% 0;
+    border-color: transparent;
+    cursor: pointer;
+}
+.body{
+    background-color: #EEEEEE;
+}
+.card-img{
+    width: 100%;
+    height: 100%;
+}
+.card-title{
+    font-family: bebas-Font;
+    font-size: 30px;
+}
+@font-face {
+    font-family: bebas-Font;
+    src: url('src/assets/fonts/BebasNeue-Regular.ttf');
+}
+.card-img-overlay{
+    color:#EEEEEE;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0 , 60%);
+}
+.N-button{
+    width: 10%;
+    height: 10%;
+    font-family: bebas-Font;
+    font-size: 30px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color:transparent;
+    color: #EEEEEE;
+    border-color: transparent;
+}
+.N-button :hover{
+    cursor: pointer;
+    color:red;
+}
+.Heart-G{
+ color: #EEEEEE;   
+}
+.Heart-R{
+    color: red;
+}

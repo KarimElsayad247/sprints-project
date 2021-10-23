@@ -1,3 +1,8 @@
+@font-face {
+    font-family: bebas-Font;
+    src: url('src/assets/fonts/BebasNeue-Regular.ttf');
+}
+
 .checked{
     color: orange;
 }
@@ -70,8 +75,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top:30px ;
-
 }
 .descContainer{
     padding-left: 10%;
@@ -188,3 +191,50 @@ input.star:checked~label.star:before {
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+
+.media-body{
+    color: #222831;
+    margin: 3% 0%;
+    background-color: #eee !important;
+    box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.3);
+}
+
+.form-control{
+    background-color: #393E46;
+    border-color: #393E46;
+    color: #eee;
+}
+
+.btn-primary{
+    background-color: #FFD369;
+    border-color: #FFD369;
+    font-size: 20px;
+    padding: 1%;
+    width: 10%;
+}
+
+.btn-primary:focus{
+    box-shadow: none;
+}
+
+.main-desc{
+    background-color: #222831;
+    width: 100%;
+    color: #eee;
+}
+
+h1{
+    font-size: 50px;
+    font-family: bebas-Font;
+    color: #eee !important;
+}
+
+h3{
+    color: #eee;
+}
+
+
+.comment-list{
+    margin: 0%;
+}
+

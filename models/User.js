@@ -51,10 +51,7 @@ const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "Disability",
   },
-  favourites: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Place",
-  },
+  favourites: [{ type: mongoose.Schema.ObjectId, ref: "Place" }],
   resetPasswordToken: String,
   resetPasswordExpire: Date,
   createdAt: {

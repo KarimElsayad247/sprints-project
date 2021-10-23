@@ -1,20 +1,14 @@
-
 .bcgImg{
     position: relative;
-
-    /* background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80');
-        position: relative;
-        background-size: cover;
-        background-position: center; */
-
-    background: linear-gradient(to right , rgb(145, 143, 143) ,rgb(67, 66, 66));
-
-
+    background-color: #FFD369;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
+
 .profile-img{
     width: 200px;
     height: 200px;
-    border-radius: 50%;
 }
 
 .favourites{
@@ -52,4 +46,73 @@
 .separator{
     height: 20px;
     width: 100%;
+}
+
+.body{
+    background-color: #222831;
+}
+
+.custom-select{
+    height: 50%;
+    margin: 2% 0%;
+    background-color: #EEEEEE;
+    border-color: #393E46;
+    border-radius: .25rem;
+    color: #222831;
+}
+
+.labels{
+    margin: 2% 0%;
+}
+
+.form-control{
+    background-color: #EEEEEE;
+    border-color: #393E46;
+}
+
+.add-icon{
+    top: 355px;
+    left: 30%;
+}
+.col-md-6{
+    width: 100%;
+}
+.col-md-7{
+    background-color: #EEEEEE;
+}
+
+.btn-primary{
+    background-color: #FFD369;
+    border-color: #FFD369;
+    color: #222831;
+}
+
+.btn .btn:focus .btn-primary:hover .btn-primary:focus .btn-check:focus + .btn-primary, .btn-primary:focus{
+    background-color: #FFD369;
+    border-color: #FFD369;
+    color: #222831;
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, 0.0) !important;
+}
+
+@media(max-width: 700px){
+    .add-icon{
+        top: 355px;
+        left: 60%;
+    }   
+}
+.form{
+    display: contents;
+}
+.col-md-12{
+    height:100%;
+}
+.custom-select{
+    margin: 0;
+}
+.dis{
+    margin: 0;
+}
+@font-face {
+    font-family: bebas-Font;
+    src: url('src/assets/fonts/BebasNeue-Regular.ttf');
 }

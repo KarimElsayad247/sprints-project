@@ -1,26 +1,29 @@
 <!-- to add component will remove it -->
-<app-navbar></app-navbar>
-<div *ngIf="true" >
-    <div class="container design mt-5"> 
-        <div class="card mb-3 mt-2" style="max-width: 300px; background-color: grey;" *ngFor="let item of favs">
+<section>
+    <app-navbar1></app-navbar1>
+    <div class="content">
+        <div class="card mb-3" style="max-width: 540px;" *ngFor="let item of favs">
             <div class="row g-0">
-              <div class="col-md-4">
-                  <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
-                  <img [src]="item.imgUrl" class="img-fluid rounded-start">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body" style="margin-top: 15px;">
-                    <div class="design">
-                        <h5 class="mb-0">{{item.name}}</h5>
-                        <ngb-rating [max]="5" [(rate)]="item.rate" [readonly]="true"></ngb-rating>
-                        <i class="bi bi-heart-fill"(click)=remove(item)></i>
+                <div class="col-md-4">
+                    <img src="https://images.unsplash.com/photo-1445937888010-cc262f556033?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="design" >
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It h</p>
+                            <h5 class="mb-0">{{item.name}}</h5>
+                            <ngb-rating [max]="5" [(rate)]="item.rate" [readonly]="true"></ngb-rating>
+                            <i class="bi bi-heart-fill"(click)=remove(item)></i>
+                        </div>
                     </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
     </div>
-</div>
+
+    <app-footer></app-footer>
+</section>
+
 <!--------------------------------------------------------->
 <!-- <ng-container *ngIf="true">
     <div class="container">
@@ -35,3 +38,24 @@
         </div>
     </div>
 </ng-container> -->
+<!-- <div *ngIf="true" >
+    <div class="container design mt-5"> 
+        <div class="card mb-3 mt-2" style="max-width: 300px; background-color: grey;" *ngFor="let item of favs">
+            <div class="row g-0">
+              <div class="col-md-4">
+                 <img src="..." class="img-fluid rounded-start" alt="..."> 
+                  <img [src]="item.imgUrl" class="img-fluid rounded-start">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body" style="margin-top: 15px;">
+                    <div class="design">
+                        <h5 class="mb-0">{{item.name}}</h5>
+                        <ngb-rating [max]="5" [(rate)]="item.rate" [readonly]="true"></ngb-rating>
+                        <i class="bi bi-heart-fill"(click)=remove(item)></i>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div> -->

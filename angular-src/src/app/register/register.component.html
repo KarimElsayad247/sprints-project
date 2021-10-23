@@ -1,16 +1,17 @@
 <form [formGroup]="regForm" (ngSubmit)="register()">
+  <flash-messages></flash-messages>
   <div class="d-flex justify-content-between flex-wrap">
     <!-- <div class="d-flex flex-row"> -->
     <div class="mb-2 space">
-      <label class="form-label required">Name</label>
-      <input type="text" class="form-control I-C" formControlName="name" />
+      <label class="form-label required" >Name</label>
+      <input type="text" class="form-control I-C" [(ngModel)]="name" formControlName="name" />
       <span class="text-danger" *ngIf="regForm.controls.name.errors && regForm.controls.name.touched">
         Invalid Name
       </span>
     </div>
     <div class="mb-2 space">
       <label class="form-label required">Email address</label>
-      <input type="email" class="form-control I-C" formControlName="email" />
+      <input type="email" class="form-control I-C" [(ngModel)]="email" formControlName="email" />
       <span class="text-danger" *ngIf="regForm.controls.email.errors && regForm.controls.email.touched">
         Invalid Email
       </span>
@@ -19,7 +20,7 @@
     <!-- <div class="d-flex"> -->
     <div class="mb-2 space">
       <label class="form-label required">Password</label>
-      <input type="password" class="form-control I-C" formControlName="password" />
+      <input type="password" class="form-control I-C" [(ngModel)]="password" formControlName="password" />
       <span class="text-danger" *ngIf="
           regForm.controls.password.errors && regForm.controls.password.touched
         ">
@@ -28,7 +29,7 @@
     </div>
     <div class="mb-2 space">
       <label class="form-label required">Birthday</label>
-      <input type="date" class="form-control I-C" formControlName="birthday" />
+      <input type="date" class="form-control I-C"  [(ngModel)]="birthday" formControlName="birthday" />
       <span class="text-danger" *ngIf="
           regForm.controls.birthday.errors && regForm.controls.birthday.touched
         ">
@@ -38,21 +39,20 @@
     <!-- </div> -->
     <!-- <div class="d-flex"> -->
     <div class="mb-2 space">
-      <label class="form-label">Address</label>
-      <input type="text" class="form-control I-C" formControlName="address" />
+      <label class="form-label required">Address</label>
+      <input type="text" class="form-control I-C" [(ngModel)]="address" formControlName="address" />
     </div>
     <div class="mb-3 space">
       <label class="form-label">Phone</label>
-      <input type="tel" class="form-control I-C" formControlName="phone" />
+      <input type="tel" class="form-control I-C" [(ngModel)]="phone" formControlName="phone" />
     </div>
     <!-- </div> -->
     <div class="mb-2 space">
       <label class="form-label required">Disability</label>
-      <input type="text" class="form-control I-C" list="select" formControlName="disability"
+      <input type="text" class="form-control I-C" list="select" [(ngModel)]="id" formControlName="disability"
         placeholder="choose your disabality" />
-      <datalist id="select">
-        <option value="blind"></option>
-        <option value="Deaf"></option>
+      <datalist id="select" >
+        <option *ngFor="let el of (data) " id="{{el._id}}">{{el.name}}</option>
       </datalist>
       <span class="text-danger" *ngIf="
           regForm.controls.disability.errors &&
@@ -61,20 +61,23 @@
         Invalid Disability
       </span>
     </div>
-
-    <!-- <div class="mb-2 space">
-      <label class="form-label required">Gender</label>
+    <div class="mb-2 space">
+       <label class="form-label required">Gender</label> 
       <br>
-      <input class="form-check-input  I-C" formControlName="gender" type="radio" value="" name="check" id="flexCheckDefault">
-      <label class="form-check-label  I-C" for="flexCheckDefault">
+      <input class="form-check-input  I-C" formControlName="gender" type="radio" [(ngModel)]="gender" value="male" id="male">
+      <label class="form-check-label  I-C" for="male">
         Male
       </label>
       <br>
-      <input class="form-check-input  I-C " formControlName="gender" type="radio" value="" name="check" id="flexCheckDefault1">
-      <label class="form-check-label  I-C " for="flexCheckDefault1">
+      <input class="form-check-input  I-C " formControlName="gender" type="radio" value="female"  [(ngModel)]="gender" id="female">
+      <label class="form-check-label  I-C " for="female">
         Female
-      </label>
-    </div> -->
+      </label> 
+      <!-- <datalist id="gender">
+        <option value="blind"></option>
+        <option value="Deaf"></option>
+      </datalist> -->
+    </div>
   </div>
   <div class="center">
     <button type="submit" class="btn b-c wd-125" [disabled]="regForm.invalid">

@@ -17,10 +17,10 @@ export class AddPlaceComponent implements OnInit {
   ngOnInit(): void {
     this.addPlaceForm = this.fb.group({
       Name:['',[Validators.required]],
-      Location:['',[Validators.required]],
+      Address:['',[Validators.required]],
       Description:['',[Validators.required]],
-      Review:['',[Validators.required]],
-      Rate:['',[Validators.required]],
+      Phone:['',[]],
+      Category:['',[Validators.required]],
     })
   }
   addPlace(){

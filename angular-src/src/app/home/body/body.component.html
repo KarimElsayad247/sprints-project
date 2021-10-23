@@ -14,7 +14,7 @@
                 <ul class="list-group list-group-flush">
                     <!-- results of ngFor is passed to appFilter with argument searchText -->
                     <li class="list-group-item" *ngFor="let c of arrName | appFilter: searchText">
-                        {{c}}
+                       <a [routerLink]="['/categories',c.id]" class="hover">{{c.name}}</a> 
                     </li>
                 </ul>
             </div>

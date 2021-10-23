@@ -72,3 +72,49 @@ exports.getMe = asyncHandler(async (req, res, next) => {
     data: user,
   });
 });
+
+//@desc         Update current logged in user profile
+//@route        PUT /api/v1/auth/me
+//@access       Private
+exports.updateProfile = asyncHandler(async (req, res, next) => {
+  let user = await User.findById(req.user.id).select("+password");
+  if (req.body.oldPassword) {
+    const isMatch = await user.matchPassword(req.body.oldPassword);
+    if (!isMatch) {
+      return next(new ErrorResponse("Invalid Old Password", 401));
+    }
+  }
+  user = await User.findByIdAndUpdate(req.user.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  user.save();
+
+  if (req.body.password) {
+    // Create token
+    const token = user.getSignedJwtToken();
+
+    const options = {
+      expires: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000,
+      ),
+      httpOnly: true,
+    };
+
+    if (process.env.NODE_ENV === "production") {
+      options.secure = true;
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: user,
+      token,
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    data: user,
+  });
+});

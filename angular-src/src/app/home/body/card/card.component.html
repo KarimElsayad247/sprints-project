@@ -1,6 +1,6 @@
 <div class="container" >
   <div class="row mt-5 text-center">
-    <div class="col-lg-4 d-flex c1" *ngFor="let el of (arr) ; let i = index " >
+    <div class="col-lg-4 d-flex c1" *ngFor="let el of (categories) ; let i = index " >
       <div class="card shadow" style=" background:#222831; width: 18rem; color: #EEEEEE;">
         <div class="d-flex">
           <img src="https://media.istockphoto.com/photos/3d-render-wooden-style-restaurant-cafe-picture-id1179449390?b=1&k=20&m=1179449390&s=170667a&w=0&h=_1JRMQ28VfvDwzgVmSLnHllSf164Q2SagfxAYoJF8ow=" class="image"  alt="Restaurants-background">
@@ -13,8 +13,8 @@
           </div> -->
         <!-- </div> -->
         <div class="card-body" >
-          <a href="/mainpage" style="text-decoration: none;">
-            <h5 class="card-title" style="color: #FFD369 ;">{{arrName[i]}}</h5>
+          <a [routerLink]="['/categories',el.id]" style="text-decoration: none;">
+            <h5 class="card-title" style="color: #FFD369 ;" >{{el.name}}</h5>
           </a>
           <p class="card-text">Here You Can Find the Best Restaurants In Your Area.</p>
         </div>

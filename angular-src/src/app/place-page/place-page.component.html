@@ -1,22 +1,24 @@
-<app-navbar></app-navbar>
-<div class="container-fluid ">
+<flash-messages></flash-messages>
+<app-navbar1></app-navbar1>
+<div class="content">
     <div class="main-desc">
         <div class="d-flex flex-column">
-            <h1 style="color: #112e51;"> {{place.name}} 
-                <i class="bi" (click)="heartClick($event)" [ngClass]="status ? 'bi-heart-fill' : 'bi-heart'"></i>
+            <h1 > {{place.name}}
+                 <!--(click)="heartClick($event)"  -->
+                <i class="bi"  [ngClass]="status ? 'bi-heart-fill' : 'bi-heart'"></i>
             </h1>
-            <h3 style="margin-top: 47px; color: #112e51;">Description</h3>
+            <h3 style="margin-top: 47px; ">Description</h3>
             <div style="padding: 15px;">
-                <p>Anything can happen</p>
+                <p>{{place.description}}</p>
             </div>
         </div>
         <div class="d-flex flex-column" style="justify-content: space-between;">
             <div class="d-flex">
                 <h3 style="margin-top: 8px;">
-                    <i class="fa fa-star me-3 fa-lg" style="color: rgb(245, 238, 40);"></i>{{ place.rate | number : '1.1-1'}}
+                    <i class="fa fa-star me-3 fa-lg" style="color: rgb(245, 238, 40);"></i>{{ place.averageRating}}
                 </h3>
             </div>
-            <h3 style="margin-top: 0px; color: #112e51;">Contact Us</h3>
+            <h3 style="margin-top: 0px;">Contact Us</h3>
             <a href="https://goo.gl/maps/w3AHf7ZCD8sQ7QCU8" class="text-reset text-decoration-none">
                 <i class="" target="_blank" class="fa fa-map-marker me-3"></i>{{place.name}}
             </a>
@@ -29,42 +31,50 @@
         </div>
     </div>
     <!-- ///////////////////////////////////////gallery/////////////////////////////////////// -->
-    <ng-image-slider  [images]="imgCollection" #nav></ng-image-slider>
+    <ng-image-slider  [images]="imgCollection"  #nav></ng-image-slider>
     <!-- ///////////////////////////////////////End gallery/////////////////////////////////////// --> 
-    <div class=" row comment-list  ">   
+    <div class=" row comment-list " >   
             <div class="add-rev ">
-                <img width="50px" height="50px" [src]="user.itemImageUrl ? user.itemImageUrl :'/assets/image/profile.jpg'" alt="profile">
+                <!-- <img width="50px" height="50px" [src]="user.itemImageUrl ? user.itemImageUrl :'/assets/image/profile.jpg'" alt="profile"> -->
                 <input type="text" class="form-control mr-3" placeholder="Review">
                 <button (click)="addReview($event)" class="btn btn-primary" type="button">Add </button>
                 <div class="rate d-flex">
-                    <input type="radio" id="star5" name="rate" value="5"(click)="rateCalc($event)"  />
+                    <input type="radio" id="star5" name="rate" value="5"  />
                     <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="rate" value="4"(click)="rateCalc($event) "/>
+                    <input type="radio" id="star4" name="rate" value="4" />
                     <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="rate" value="3" (click)="rateCalc($event)"  />
+                    <input type="radio" id="star3" name="rate" value="3"  />
                     <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="rate" value="2"(click)="rateCalc($event) "/>
+                    <input type="radio" id="star2" name="rate" value="2"/>
                     <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rate" value="1"(click)="rateCalc($event)"  />
+                    <input type="radio" id="star1" name="rate" value="1"/>
                     <label for="star1" title="text">1 star</label>
                 </div>
             </div>
-    <div class="row comment-list "  *ngFor="let comment of comments ">
+            <!-- *ngFor="let comment of comments " -->
+    <div class="row comment-list " *ngFor="let c of (reviews) ">
         <div class="col-md-8">
             <div class="media g-mb-30 media-comment">
-                <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" [src]="user.itemImageUrl ? user.itemImageUrl :'/assets/image/profile.jpg'"  alt="Image profile">
+                <!-- <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" [src]="user.itemImageUrl ? user.itemImageUrl :'/assets/image/profile.jpg'"  alt="Image profile"> -->
                 <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
                   <div class="g-mb-15">
-                    <h5 class="h5 g-color-gray-dark-v1 mb-0">{{user.name}}</h5>
-                    <span class="g-color-gray-dark-v4 g-font-size-12"> 3 hours ago </span>
+                    <!-- <h5 class="h5 g-color-gray-dark-v1 mb-0">{{}}</h5> -->
+                    <!-- <span class="g-color-gray-dark-v4 g-font-size-12"> 3 hours ago </span> -->
+                    <p>{{c.text}}</p>
+                    <br>
+                    <div class="d-flex align-items-center">
+                        <p style="font-size: 20px; margin-bottom: 0px;">{{c.rating}}</p>
+                        <h4 style="margin-top: 8px;">
+                            <i class="fa fa-star me-3 fa-lg" style="color: rgb(245, 238, 40);"></i>
+                        </h4>
+                    </div>
                   </div>
-                  <p>{{comment}}</p>
             </div>
         </div>
       </div>
     </div>
 </div>
-
+<app-footer></app-footer>
 
 
 

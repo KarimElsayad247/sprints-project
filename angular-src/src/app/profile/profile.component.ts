@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  firstName = "Ahmed"
+  
   user ={
-    name: this.firstName,
-    lastName :' Adel',
+    Name :'Adel Ibrahim',
     disability: 'blind',
     email: 'ahmed@gmail.com'
     ,location:'cairo'
@@ -35,16 +35,13 @@ export class ProfileComponent implements OnInit {
     };
 
     reader.readAsDataURL(event.target.files[0]);
-    
   }
 
 
-
-  constructor() { }
+  
+  constructor() {}
 
   ngOnInit(): void {
   }
-
-
 }
 

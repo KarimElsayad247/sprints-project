@@ -7,6 +7,13 @@ const CategorySchema = new mongoose.Schema(
       required: [true, "Please add a category name"],
       unique: true,
     },
+    description: {
+      type: String,
+      required: [true, "Please add a description"],
+    },
+    photo: {
+      type: String,
+    },
   },
   {
     toJSON: { virtuals: true },

@@ -20,6 +20,14 @@
 li{
     background-color: #393E46;
     color: #EEEEEE;
+    cursor: pointer;
+}
+ul li :hover{
+    color: #FFD369;
+}
+.hover{
+    text-decoration: none;
+    color: #EEEEEE;    
 }
 ul{     
     box-shadow: 5px 6px 10px rgb(0 0 0 / 45%);

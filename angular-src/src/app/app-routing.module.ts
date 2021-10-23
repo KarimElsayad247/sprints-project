@@ -9,17 +9,18 @@ import { AuthComponent } from './auth/auth.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import { FavComponent } from './fav/fav.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { GuardGuard} from './guards/guard.guard'
 
 
 const routes: Routes =[
-  { path: '', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'place', component: PlacePageComponent },
-  { path: 'add_place', component: AddPlaceComponent },
-  { path: 'auth', component: AuthComponent},
-  {path : 'fav',component:FavComponent},
-  {path : 'mainpage',component:MainpageComponent},
-  { path: '**', component: NotfoundComponent}
+  { path: '' , component: HomeComponent },
+  { path: 'profile', component: ProfileComponent, canActivate:[GuardGuard]},
+  { path: 'categories/:categoryId/places/:placeId' , component: PlacePageComponent },
+  { path: 'add_place' , component: AddPlaceComponent, canActivate:[GuardGuard] },
+  { path: 'auth' , component: AuthComponent},
+  { path : 'fav' ,component:FavComponent, canActivate:[GuardGuard]},
+  { path : 'categories/:id' ,component:MainpageComponent},
+  { path: '**' , component: NotfoundComponent}
 ]
 @NgModule({
   declarations: [],

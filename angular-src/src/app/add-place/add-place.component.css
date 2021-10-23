@@ -1,3 +1,8 @@
+@font-face {
+    font-family: bebas-Font;
+    src: url('src/assets/fonts/BebasNeue-Regular.ttf');
+}
+
 .center{
     display: flex;
     justify-content: center;
@@ -10,22 +15,68 @@
     overflow-y:hidden ;
     /* background-color: rgb(172, 114, 247); */
 }
-.card-style{
+
+.body{
     display: flex;
     justify-content:center;
     align-items:center;
-    margin:6% 0%;
+    padding-top: 5.5%;
+    width: 100%;
+    padding-bottom: 6%;
 }
-.overlay {
+
+h3{
+    font-family: bebas-Font;
+    font-size: 50px;
+    text-align: center;
+    color: #EEEEEE;
+}
+
+.form-control{
+    background-color:#393E46;
+    border-color:#393E46 !important;
+    color: #EEEEEE;
+}
+
+.bg{
+    background-image: url('https://images.unsplash.com/photo-1498578726655-4a7188d5b17c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.required:after {
+    content:" *";
+    color: red;
+}
+
+.ovrlay {
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
-    background-color: rgba(57, 62, 70 ,0.3); /* Black background with opacity */
+    background-color: rgba(0, 0, 0 ,0.6);
     z-index: 2;
 }
-.img{
-    background-image: url('https://images.unsplash.com/photo-1569937756023-a079ccbe730e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGRpc2FiaWxpdHklMjBzZXJ2aWNlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
-    background-position: center;
+.img-fluid{
+    height: 100% !important;
+}
+
+
+.b-c , .btn:focus{
+    background-color: #FFD369 !important;
+    border-color: #FFD369;
+    color:#222831;
+}
+
+a{
+    color: transparent !important;
+}
+
+.card{
+    background-color: #222831;
+    color: #EEEEEE;
+}
+.content{
+    background-image: url('https://images.unsplash.com/photo-1498578726655-4a7188d5b17c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80') !important;
+    background-size: cover;
     background-repeat: no-repeat;
-    /* background-size: cover; */
-    position: relative;
+    /* background-color: #EEEEEE; */
+    width: 100%;
 }

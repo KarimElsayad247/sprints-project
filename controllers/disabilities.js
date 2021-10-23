@@ -6,13 +6,7 @@ const Disability = require("../models/Disability");
 //@route        GET /api/v1/disabilities
 //@access       Public
 exports.getAllDisabilities = asyncHandler(async (req, res, next) => {
-  const Disabilities = await Disability.find();
-
-  res.status(200).json({
-    success: true,
-    count: Disabilities.length,
-    data: Disabilities,
-  });
+  res.status(200).json(res.advancedResults);
 });
 
 //@desc         Add a New Disability

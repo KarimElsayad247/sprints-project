@@ -20,41 +20,33 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
   }
 });
 
-//@desc         Get a Single Comment of a Place
-//@route        GET /api/v1/place/:placeId/comments/:commentId
+//@desc         Get a Single Review of a Place
+//@route        GET /api/v1/place/:placeId/reviews/:reviewId
 //@access       Public
-exports.getComment = asyncHandler(async (req, res, next) => {
-  const comment = await Comment.findOne({
-    place: req.params.placeId,
-    _id: req.params.commentId,
-  }).populate({
-    path: "user",
-    select: "name",
+exports.getReview = asyncHandler(async (req, res, next) => {
+  const review = await Review.findById(req.params.reviewId).populate({
+    path: "place",
   });
 
-  if (!comment) {
+  if (!review) {
     return next(
-      new ErrorResponse(`No comment with the id of ${req.params.commentId}`),
+      new ErrorResponse(`No review with the id of ${req.params.reviewId}`),
       404,
     );
   }
 
-  res.status(200).json({ success: true, data: comment });
+  res.status(200).json({ success: true, data: review });
 });
 
 //@desc         Add a New Comment
-//@route        POST /api/v1/place/:placeId/comments
+//@route        POST /api/v1/places/:placeId/reviews
 //@access       Private
-exports.addComment = asyncHandler(async (req, res, next) => {
-  const { title, body } = req.body;
+exports.addReview = asyncHandler(async (req, res, next) => {
+  req.body.place = req.params.placeId;
+  req.body.user = req.user.id;
 
-  const comment = await Comment.create({
-    title,
-    body,
-    user: req.user.id,
-    place: req.params.placeId,
-  });
-  res.status(200).json({ success: true, data: comment });
+  const review = await Review.create(req.body);
+  res.status(201).json({ success: true, data: review });
 });
 
 //@desc         Update a Comment

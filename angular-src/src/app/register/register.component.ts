@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , FormControl} from '@angular/forms';
+import {AuthservicesService} from '../services/authservices.service';
 
+import { FlashMessagesService } from 'angular2-flash-messages';
+import {Router} from '@angular/router'
+import { timeout } from 'rxjs-compat/operator/timeout';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,7 +14,15 @@ export class RegisterComponent implements OnInit {
   success:boolean = false;
   successMessage: string = "";
   regForm!:FormGroup
-  constructor(private fb: FormBuilder) { 
+  name:String = ""
+  password: String =""
+  email: String = ""
+  birthday: String = ""
+  phone:String=""
+  address:String="" 
+  id: string=""
+  gender: any 
+  constructor(private fb: FormBuilder ,private _flashMessagesService:FlashMessagesService  , private router:Router ,private auth :AuthservicesService ) { 
     this.regForm = this.fb.group({
       name: new FormControl('', [
         Validators.required,
@@ -30,24 +42,45 @@ export class RegisterComponent implements OnInit {
       ]),
       birthday: new FormControl('', [Validators.required]),
       phone: new FormControl('', []),
-      address: new FormControl('', []),
+      address: new FormControl('', [Validators.required]),
       disability: new FormControl('', [Validators.required]),
-      gender: new FormControl('', [Validators.required])
+      gender: new FormControl('', [Validators.required , Validators.nullValidator])
     })
   }
-
+  data :any[] = []
   ngOnInit(): void {
+    this.auth.getAllDisabilities().subscribe((data:any)=>{
+      this.data = data['data']
+    })
   }
   register(){
-    this.successMessage = "Registered Successfully";
-    this.success=true;
-    console.log(this.regForm)
+    this.id = this.data.filter(disability =>
+      disability.name == this.id
+    )[0]['_id']
+    console.log(this.id)
+    const user={
+      name: this.name,
+      email:this.email,
+      password:this.password,
+      birthday:this.birthday,
+      phone:this.phone,
+      address:this.address,
+      disability:this.id,
+      gender:this.gender,
+    }
+    console.log(user)
+    this.auth.registerUser(user).subscribe((data: any)=>{
+      if(data.success)
+      {
+        this._flashMessagesService.show('Success!', { cssClass: 'alert-success', timeout: 3000 });
+        this.router.navigate(['/']);
+      }
+      else
+      {
+        this.success=true;
+        this.successMessage = "Invalid Data";
+      }
+    })
   }
+ 
 }
-// name: ['',[Validators.required], Validators.pattern("[a-zA-Z@_]")],
-// email:['',[Validators.required , Validators.pattern("[a-zA-Z0-9@_]+@[a-zA-Z]+.com")]],
-// password:['',[Validators.required , Validators.pattern("[a-zA-Z0-9@_]{6,}")]],
-// birthday:['',[Validators.required]],
-// address:['',[Validators.required]],
-// disability:['',[Validators.required]],
-// phone:['',[Validators.required,Validators.max(119)]]

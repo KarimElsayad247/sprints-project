@@ -10,7 +10,6 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { BodyComponent } from './home/body/body.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { CardComponent } from './home/body/card/card.component';
@@ -26,7 +25,11 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingModule } from 'ng-starrating';
 import { FilterPipe } from './filter.pipe';
-// import {IvyCarouselModule} from 'angular-responsive-carousel'; IvyCarouselModule
+import { Navbar1Component } from './navbar1/navbar1.component';
+import {AuthservicesService} from './services/authservices.service';
+import { HomeService } from './services/home.service'; 
+import {GuardGuard} from './guards/guard.guard';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,6 @@ import { FilterPipe } from './filter.pipe';
     ProfileComponent,
     PlacePageComponent,
     HomeComponent,
-    NavbarComponent,
     BodyComponent,
     FooterComponent,
     CardComponent,
@@ -46,12 +48,13 @@ import { FilterPipe } from './filter.pipe';
     MainpageComponent,
     FavComponent,
     FilterPipe,
+    Navbar1Component,
   ],
   imports: [
     BrowserModule, FormsModule, appRoutingModule , NgImageSliderModule ,BrowserAnimationsModule,ReactiveFormsModule, NgbModule,
-    HttpClientModule,CommonModule,RatingModule, NgbModule 
+    HttpClientModule,CommonModule,RatingModule, NgbModule , FlashMessagesModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthservicesService , HomeService , GuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {   
